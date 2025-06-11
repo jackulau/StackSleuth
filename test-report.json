@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-06-11T04:23:08.753Z",
-  "totalDuration": 24040,
+  "timestamp": "2025-06-11T04:24:31.495Z",
+  "totalDuration": 21694,
   "summary": {
     "total": 18,
     "passed": 18,
@@ -10,63 +10,63 @@
     "agents": {
       "core": {
         "success": true,
-        "duration": 2240,
+        "duration": 2160,
         "code": 0,
         "stdout": "\n> @stacksleuth/core@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "backend-agent": {
         "success": true,
-        "duration": 2151,
+        "duration": 2113,
         "code": 0,
         "stdout": "\n> @stacksleuth/backend-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "frontend-agent": {
         "success": true,
-        "duration": 2221,
+        "duration": 2208,
         "code": 0,
         "stdout": "\n> @stacksleuth/frontend-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "db-agent": {
         "success": true,
-        "duration": 2163,
+        "duration": 2133,
         "code": 0,
         "stdout": "\n> @stacksleuth/db-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "svelte-agent": {
         "success": true,
-        "duration": 2214,
+        "duration": 2206,
         "code": 0,
         "stdout": "\n> @stacksleuth/svelte-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "redis-agent": {
         "success": true,
-        "duration": 2263,
+        "duration": 2210,
         "code": 0,
         "stdout": "\n> @stacksleuth/redis-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "fastapi-agent": {
         "success": true,
-        "duration": 2161,
+        "duration": 2138,
         "code": 0,
         "stdout": "\n> @stacksleuth/fastapi-agent@0.2.3 build\n> tsc\n\n",
         "stderr": ""
       },
       "browser-agent": {
         "success": true,
-        "duration": 4532,
+        "duration": 2501,
         "code": 0,
-        "stdout": " 'data' implicitly has an 'any' type.\n../api/src/middleware/auth.ts(11,5): error TS2322: Type 'Response<any, Record<string, any>>' is not assignable to type 'void'.\n../api/src/middleware/auth.ts(21,5): error TS2322: Type 'Response<any, Record<string, any>>' is not assignable to type 'void'.\n../api/src/utils/logger.ts(1,21): error TS2307: Cannot find module 'winston' or its corresponding type declarations.\n../session-replay/src/__tests__/index.test.ts(53,24): error TS2339: Property 'sessionId' does not exist on type 'string'.\n../session-replay/src/__tests__/index.test.ts(54,38): error TS2339: Property 'events' does not exist on type 'string'.\n../session-replay/src/__tests__/index.test.ts(61,24): error TS2339: Property 'events' does not exist on type 'string'.\n../session-replay/src/__tests__/index.test.ts(68,38): error TS2339: Property 'events' does not exist on type 'string'.\n../session-replay/src/__tests__/index.test.ts(68,52): error TS7006: Parameter 'e' implicitly has an 'any' type.\n",
-        "stderr": "npm ERR! Lifecycle script `build` failed with error: \nnpm ERR! Error: command failed \nnpm ERR!   in workspace: @stacksleuth/browser-agent@0.2.3 \nnpm ERR!   at location: /Users/jacklau/Documents/SlackSleuth/packages/browser-agent \n"
+        "stdout": "\n> @stacksleuth/browser-agent@0.2.3 build\n> tsc\n\n",
+        "stderr": ""
       },
       "cli": {
         "success": true,
-        "duration": 2524,
+        "duration": 2430,
         "code": 0,
         "stdout": "\n> @stacksleuth/cli@0.2.3 build\n> tsc\n\n",
         "stderr": ""
@@ -75,14 +75,14 @@
     "frameworks": {
       "svelte": {
         "success": true,
-        "duration": 140,
+        "duration": 133,
         "code": 0,
         "stdout": "Svelte agent test completed\n",
         "stderr": ""
       },
       "fastapi": {
         "success": true,
-        "duration": 244,
+        "duration": 261,
         "code": 0,
         "stdout": "✅ FastAPIAgent created successfully\n✅ Performance stats method works: 8 properties\n✅ Middleware code generation works: success\nFastAPI agent test completed\n",
         "stderr": ""
@@ -91,14 +91,14 @@
     "databases": {
       "redis": {
         "success": true,
-        "duration": 140,
+        "duration": 134,
         "code": 0,
         "stdout": "✅ StackSleuth ProfilerCore initialized\n✅ RedisAgent has recordOperationMetrics method\n✅ Performance stats method works: 7 properties\nRedis agent test completed\n",
         "stderr": ""
       },
       "integration": {
         "success": true,
-        "duration": 93,
+        "duration": 95,
         "code": 0,
         "stdout": "Testing Redis integration...\nTesting MySQL integration...\nTesting Supabase integration...\nDatabase integration tests completed\n",
         "stderr": ""
@@ -107,21 +107,21 @@
     "performance": {
       "memory": {
         "success": true,
-        "duration": 95,
+        "duration": 99,
         "code": 0,
         "stdout": "Start memory: 3.54 MB\nEnd memory: 4.87 MB\nMemory optimization test completed\n",
         "stderr": ""
       },
       "cpu": {
         "success": true,
-        "duration": 99,
+        "duration": 103,
         "code": 0,
-        "stdout": "CPU test duration: 0.60 ms\nCPU optimization test completed\n",
+        "stdout": "CPU test duration: 0.63 ms\nCPU optimization test completed\n",
         "stderr": ""
       },
       "visualizations": {
         "success": true,
-        "duration": 95,
+        "duration": 96,
         "code": 0,
         "stdout": "✅ Dashboard package found\nTesting real-time chart capabilities...\nTesting performance overlay features...\nVisualization tests completed\n",
         "stderr": ""
@@ -130,7 +130,7 @@
     "browser": {
       "automation": {
         "success": true,
-        "duration": 551,
+        "duration": 561,
         "code": 0,
         "stdout": "✅ StackSleuth ProfilerCore initialized\nSession ID: test-session-123\nBrowser agent test completed\n🔄 Browser Agent initialized\n",
         "stderr": ""
@@ -139,7 +139,7 @@
     "cicd": {
       "github_actions": {
         "success": true,
-        "duration": 95,
+        "duration": 96,
         "code": 0,
         "stdout": "✅ Performance benchmarks found in workflow\n✅ Load testing found in workflow\n✅ Security checks found in workflow\nCI/CD integration test completed\n",
         "stderr": ""
