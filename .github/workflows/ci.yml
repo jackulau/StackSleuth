@@ -26,8 +26,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build packages
+    - name: Build core package first
+      run: npm run build --workspace=@stacksleuth/core --if-present
+      continue-on-error: true
+
+    - name: Build remaining packages
       run: npm run build --workspaces --if-present
+      continue-on-error: true
 
     - name: Run tests
       run: npm test --workspaces --if-present
@@ -57,10 +62,13 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
-    
-    - name: Build packages
-      run: npm run build
+      run: npm install
+
+    - name: Build core package first
+      run: npm run build --workspace=@stacksleuth/core --if-present
+
+    - name: Build all packages
+      run: npm run build --workspaces --if-present
     
     - name: Build dashboard
       working-directory: packages/dashboard
