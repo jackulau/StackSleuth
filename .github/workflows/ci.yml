@@ -24,11 +24,10 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm install
+      run: npm install --ignore-scripts
 
     - name: Build core package first
-      run: npm run build --workspace=@stacksleuth/core --if-present
-      continue-on-error: true
+      run: npm run build --workspace=@stacksleuth/core
 
     - name: Build remaining packages
       run: npm run build --workspaces --if-present
@@ -62,10 +61,10 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm install
+      run: npm install --ignore-scripts
 
     - name: Build core package first
-      run: npm run build --workspace=@stacksleuth/core --if-present
+      run: npm run build --workspace=@stacksleuth/core
 
     - name: Build all packages
       run: npm run build --workspaces --if-present
