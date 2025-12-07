@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/mongodb-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced MongoDB performance monitoring agent - Query optimization, aggregation pipeline analysis, index usage tracking, connection pool monitoring, and real-time database performance metrics.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

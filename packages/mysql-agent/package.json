@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/mysql-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced MySQL performance monitoring agent - Query optimization, index analysis, connection pool monitoring, slow query detection, and real-time database performance insights.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

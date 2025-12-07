@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/supabase-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Specialized Supabase performance monitoring agent - Real-time database tracking, auth performance analysis, edge function monitoring, and comprehensive cloud database optimization.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

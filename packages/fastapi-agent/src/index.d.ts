@@ -9,6 +9,7 @@ export interface FastAPIRouteMetrics {
     userId?: string;
     errors: string[];
     dbQueries: number;
+    dbQueryTime: number;
     cacheHits: number;
     cacheMisses: number;
 }

@@ -8,6 +8,10 @@ export interface SupabaseOperationMetrics {
     cacheHit: boolean;
     error?: string;
     timestamp: number;
+    traceId?: string;
+    userId?: string;
+    queryComplexity?: number;
+    indexUsage?: string[];
 }
 export interface SupabaseRealtimeMetrics {
     channel: string;
@@ -17,42 +21,109 @@ export interface SupabaseRealtimeMetrics {
     latency: number;
     connectionStatus: 'connected' | 'disconnected' | 'reconnecting';
     timestamp: number;
+    retryCount?: number;
+    errorRate?: number;
 }
 export interface SupabaseStorageMetrics {
     bucket: string;
-    operation: 'upload' | 'download' | 'delete' | 'list';
+    operation: 'upload' | 'download' | 'delete' | 'list' | 'move' | 'copy';
     fileSize: number;
     duration: number;
     error?: string;
     timestamp: number;
+    compressionRatio?: number;
+    cdnHit?: boolean;
 }
 export interface SupabaseAuthMetrics {
-    operation: 'signIn' | 'signUp' | 'signOut' | 'getUser' | 'refreshToken';
+    operation: 'signIn' | 'signUp' | 'signOut' | 'getUser' | 'refreshToken' | 'resetPassword' | 'updateUser';
     provider?: string;
     duration: number;
     success: boolean;
     error?: string;
     timestamp: number;
+    sessionDuration?: number;
+    mfaEnabled?: boolean;
+}
+export interface SupabasePerformanceStats {
+    database: {
+        totalOperations: number;
+        averageDuration: number;
+        slowQueries: number;
+        errorRate: number;
+        topTables: Array<{
+            table: string;
+            operations: number;
+            avgDuration: number;
+        }>;
+        cacheHitRate: number;
+        connectionPoolStats: {
+            activeConnections: number;
+            maxConnections: number;
+            waitingQueries: number;
+        };
+    };
+    realtime: {
+        activeChannels: number;
+        totalEvents: number;
+        averageLatency: number;
+        connectionStatus: 'connected' | 'disconnected' | 'mixed';
+        subscriptionHealth: number;
+        messageDropRate: number;
+    };
+    storage: {
+        totalOperations: number;
+        totalDataTransferred: number;
+        averageDuration: number;
+        compressionEfficiency: number;
+        cdnHitRate: number;
+        costOptimization: {
+            estimatedCost: number;
+            suggestions: string[];
+        };
+    };
+    auth: {
+        totalOperations: number;
+        successRate: number;
+        averageDuration: number;
+        activeUsers: number;
+        securityMetrics: {
+            failedLoginAttempts: number;
+            suspiciousActivity: number;
+            mfaAdoption: number;
+        };
+    };
+}
+export interface SupabaseAgentConfig {
+    endpoint?: string;
+    apiKey?: string;
+    slowQueryThreshold?: number;
+    maxMetricsHistory?: number;
+    monitorRealtime?: boolean;
+    monitorStorage?: boolean;
+    monitorAuth?: boolean;
+    enableQueryOptimization?: boolean;
+    enableCostTracking?: boolean;
+    enableSecurityMonitoring?: boolean;
+    samplingRate?: number;
+    autoInit?: boolean;
 }
 export declare class SupabaseAgent {
     private profiler;
     private client?;
     private isActive;
+    private config;
     private operationMetrics;
     private realtimeMetrics;
     private storageMetrics;
     private authMetrics;
     private activeChannels;
     private originalMethods;
-    constructor(config?: {
-        endpoint?: string;
-        apiKey?: string;
-        slowQueryThreshold?: number;
-        maxMetricsHistory?: number;
-        monitorRealtime?: boolean;
-        monitorStorage?: boolean;
-        monitorAuth?: boolean;
-    });
+    private performanceBaselines;
+    private queryOptimizationSuggestions;
+    private costTracker;
+    private securityEvents;
+    private monitoringInterval?;
+    constructor(config?: SupabaseAgentConfig);
     /**
      * Initialize the Supabase agent
      */
@@ -66,79 +137,85 @@ export declare class SupabaseAgent {
      */
     private instrumentSupabaseClient;
     /**
-     * Instrument database operations
+     * Enhanced database operations instrumentation
      */
     private instrumentDatabaseOperations;
     /**
-     * Wrap query builder methods
+     * Enhanced query builder wrapping
      */
     private wrapQueryBuilder;
     /**
-     * Instrument realtime operations
+     * Enhanced realtime operations instrumentation
      */
     private instrumentRealtimeOperations;
     /**
-     * Instrument a realtime channel
+     * Enhanced channel instrumentation
      */
     private instrumentChannel;
     /**
-     * Instrument storage operations
+     * Enhanced storage operations instrumentation
      */
     private instrumentStorageOperations;
     /**
-     * Wrap storage bucket methods
+     * Enhanced storage bucket wrapping
      */
     private wrapStorageBucket;
     /**
-     * Instrument auth operations
+     * Enhanced auth operations instrumentation
      */
     private instrumentAuthOperations;
     /**
-     * Record database operation metrics
+     * Start performance monitoring
+     */
+    private startPerformanceMonitoring;
+    /**
+     * Record database operation metrics with enhanced tracking
      */
     private recordOperation;
     /**
-     * Record realtime event metrics
+     * Enhanced performance analysis methods
      */
-    private recordRealtimeEvent;
-    /**
-     * Record storage operation metrics
-     */
-    private recordStorageOperation;
-    /**
-     * Record auth operation metrics
-     */
-    private recordAuthOperation;
-    /**
-     * Get performance summary
-     */
-    getPerformanceSummary(): any;
-    /**
-     * Get table operation statistics
-     */
-    getTableStats(tableName: string): any;
-    /**
-     * Helper methods
-     */
+    private analyzeQueryPerformance;
+    private generateOptimizationSuggestions;
+    private calculateQueryComplexity;
+    private analyzeIndexUsage;
+    private checkCacheHit;
+    private trackOperationCost;
+    private getBaseCost;
+    private trackStorageCost;
+    private analyzeAuthSecurity;
+    private recordSecurityEvent;
+    private analyzePerformanceTrends;
+    private optimizeQueries;
+    private generateCostReport;
+    private checkSecurityThresholds;
+    private generateTraceId;
     private getFileSize;
+    private calculateCompressionRatio;
+    private checkCdnHit;
     private mapAuthOperation;
-    private getTopTables;
-    private getOverallConnectionStatus;
-    private groupBy;
-    private calculatePerformanceTrend;
-    /**
-     * Export metrics
-     */
+    private recordRealtimeEvent;
+    private recordStorageOperation;
+    private recordAuthOperation;
+    getPerformanceSummary(): SupabasePerformanceStats;
+    getTableStats(tableName: string): any;
     exportMetrics(): any;
-    /**
-     * Stop monitoring and cleanup
-     */
     stop(): Promise<void>;
-    /** TEST COMPATIBILITY WRAPPERS */
     startMonitoring(): Promise<void>;
     stopMonitoring(): Promise<void>;
     getOperationMetrics(): any[];
     getTableStatistics(): any[];
+    private getTopTables;
+    private getOverallConnectionStatus;
+    private calculateSubscriptionHealth;
+    private calculateMessageDropRate;
+    private calculateCompressionEfficiency;
+    private generateCostOptimizationSuggestions;
+    private getActiveUserCount;
+    private calculateSuspiciousActivity;
+    private calculateMfaAdoption;
+    private groupBy;
+    private calculatePerformanceTrend;
 }
 export declare const supabaseAgent: SupabaseAgent;
 //# sourceMappingURL=index.d.ts.map

@@ -1,5 +1,44 @@
 /* GitBook-style theme for StackSleuth Documentation */
 
+/* CSS Variables for theming */
+:root {
+    /* Colors */
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --secondary-color: #2c3e50;
+    --accent-color: #27ae60;
+
+    /* Text colors */
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6c7d;
+    --text-muted: #8892a4;
+
+    /* Background colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafbfc;
+    --bg-tertiary: #f8f9fa;
+    --bg-code: #2d2d2d;
+
+    /* Border colors */
+    --border-color: #e6e8eb;
+    --border-light: #e9ecef;
+
+    /* Callout colors */
+    --callout-info-bg: #e7f3ff;
+    --callout-info-border: #3498db;
+    --callout-warning-bg: #fff3cd;
+    --callout-warning-border: #ffc107;
+    --callout-success-bg: #d4edda;
+    --callout-success-border: #28a745;
+    --callout-danger-bg: #f8d7da;
+    --callout-danger-border: #dc3545;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+}
+
 /* CSS Reset & Base Styles */
 * {
     margin: 0;
@@ -15,8 +54,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    color: #2c3e50;
-    background: #ffffff;
+    color: var(--text-primary);
+    background: var(--bg-primary);
     overflow-x: hidden;
 }
 
@@ -1171,21 +1210,384 @@ pre[class*="language-"] code {
     }
 }
 
-/* Dark mode adjustments */
+/* Comprehensive Dark Mode Support */
 @media (prefers-color-scheme: dark) {
+    :root {
+        /* Colors */
+        --primary-color: #5dade2;
+        --primary-hover: #3498db;
+        --secondary-color: #ecf0f1;
+        --accent-color: #2ecc71;
+
+        /* Text colors */
+        --text-primary: #ecf0f1;
+        --text-secondary: #bdc3c7;
+        --text-muted: #95a5a6;
+
+        /* Background colors */
+        --bg-primary: #1a1a2e;
+        --bg-secondary: #16213e;
+        --bg-tertiary: #0f3460;
+        --bg-code: #0d1117;
+
+        /* Border colors */
+        --border-color: #2d3748;
+        --border-light: #374151;
+
+        /* Callout colors */
+        --callout-info-bg: rgba(52, 152, 219, 0.15);
+        --callout-info-border: #3498db;
+        --callout-warning-bg: rgba(255, 193, 7, 0.15);
+        --callout-warning-border: #ffc107;
+        --callout-success-bg: rgba(40, 167, 69, 0.15);
+        --callout-success-border: #28a745;
+        --callout-danger-bg: rgba(220, 53, 69, 0.15);
+        --callout-danger-border: #dc3545;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary);
+    }
+
+    h1 {
+        border-bottom-color: var(--border-color);
+    }
+
+    h2 {
+        border-bottom-color: var(--border-color);
+    }
+
+    h3, h4 {
+        color: var(--text-secondary);
+    }
+
+    p {
+        color: var(--text-secondary);
+    }
+
+    a {
+        color: var(--primary-color);
+    }
+
+    a:hover {
+        color: var(--primary-hover);
+    }
+
+    /* Sidebar */
+    .gitbook-sidebar {
+        background: var(--bg-secondary);
+        border-right-color: var(--border-color);
+    }
+
+    .sidebar-logo span {
+        color: var(--text-primary);
+    }
+
+    .nav-section-title {
+        color: var(--text-muted);
+    }
+
+    .nav-link {
+        color: var(--text-secondary);
+    }
+
+    .nav-link:hover {
+        color: var(--text-primary);
+        background: var(--bg-tertiary);
+    }
+
+    .nav-link.active {
+        color: var(--primary-color);
+        background: rgba(52, 152, 219, 0.1);
+        border-left-color: var(--primary-color);
+    }
+
+    /* Content */
+    .gitbook-content {
+        background: var(--bg-primary);
+    }
+
+    .gitbook-header {
+        background: var(--bg-primary);
+        border-bottom-color: var(--border-color);
+    }
+
+    .gitbook-header .breadcrumb {
+        color: var(--text-muted);
+    }
+
+    .header-search input {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+
+    .header-search input:focus {
+        border-color: var(--primary-color);
+        background: var(--bg-tertiary);
+    }
+
+    .header-search .search-icon {
+        color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    .btn:hover {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    .btn-primary {
+        background: var(--primary-color);
+        color: var(--bg-primary);
+    }
+
+    .btn-secondary {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+
+    /* Callouts */
+    .callout {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .callout.info {
+        background: var(--callout-info-bg);
+        border-left-color: var(--callout-info-border);
+    }
+
+    .callout.warning {
+        background: var(--callout-warning-bg);
+        border-left-color: var(--callout-warning-border);
+    }
+
+    .callout.success {
+        background: var(--callout-success-bg);
+        border-left-color: var(--callout-success-border);
+    }
+
+    .callout p {
+        color: var(--text-secondary);
+    }
+
+    /* Code blocks */
+    pre[class*="language-"] {
+        background: var(--bg-code) !important;
+        border-color: var(--border-color);
+    }
+
+    code {
+        background: var(--bg-tertiary);
+        color: var(--primary-color);
+    }
+
+    /* Cards */
+    .feature-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .feature-card:hover {
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-md);
+    }
+
+    .feature-card h4 {
+        color: var(--text-primary);
+    }
+
+    .feature-card p {
+        color: var(--text-secondary);
+    }
+
+    /* Tables */
+    table {
+        border-color: var(--border-color);
+    }
+
+    th {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    td {
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+    }
+
+    tr:hover {
+        background: var(--bg-secondary);
+    }
+
+    /* Mobile header */
+    .mobile-header {
+        background: var(--bg-secondary);
+        border-bottom-color: var(--border-color);
+    }
+
+    .mobile-toggle {
+        color: var(--text-primary);
+    }
+
+    /* Sidebar overlay */
+    .sidebar-overlay.active {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Footer navigation */
+    .footer-nav {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+    }
+
+    .footer-nav:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    /* Search results */
+    .search-results {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .search-result-item:hover {
+        background: var(--bg-tertiary);
+    }
+
+    /* Package cards */
+    .package-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .package-header h3 {
+        color: var(--text-primary);
+    }
+
+    .package-description {
+        color: var(--text-secondary);
+    }
+
+    /* Impact cards */
     .impact-card {
         background: linear-gradient(135deg, #4a90e2, #7b68ee);
     }
-    
+
+    /* Copy button */
     .copy-button {
         background: rgba(0, 0, 0, 0.3);
         border-color: rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.7);
     }
-    
+
     .copy-button:hover {
         background: rgba(0, 0, 0, 0.5);
         color: white;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        background: var(--border-color);
+    }
+
+    /* Content sections */
+    .content-wrapper {
+        background: var(--bg-primary);
+    }
+
+    .content-title {
+        color: var(--text-primary);
+    }
+
+    .content-subtitle {
+        color: var(--text-secondary);
+    }
+
+    /* Best practices grid */
+    .practice-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .practice-card h3, .practice-card h4 {
+        color: var(--text-primary);
+    }
+
+    .practice-card p, .practice-card li {
+        color: var(--text-secondary);
+    }
+
+    /* Metrics grid */
+    .metric-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .metric-card h4 {
+        color: var(--text-primary);
+    }
+
+    .metric-card li {
+        color: var(--text-secondary);
+    }
+
+    /* Example cards */
+    .example-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .example-header h3 {
+        color: var(--text-primary);
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        border-color: var(--border-color);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+        background: var(--primary-color);
+        color: var(--bg-primary);
+    }
+
+    /* Pattern cards */
+    .pattern-card {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .pattern-card h3 {
+        color: var(--text-primary);
+    }
+
+    .pattern-card p {
+        color: var(--text-secondary);
     }
 }
 

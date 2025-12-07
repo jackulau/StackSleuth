@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/performance-optimizer",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Intelligent performance optimization engine - Automated bottleneck detection, code optimization suggestions, resource optimization, and performance enhancement recommendations.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

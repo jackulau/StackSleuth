@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/db-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Universal database performance monitoring agent - Multi-database support, query optimization, connection pool monitoring, transaction tracking, and comprehensive database performance analytics.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

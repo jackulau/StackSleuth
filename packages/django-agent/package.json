@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/django-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced Django performance monitoring agent - Middleware tracking, database query optimization, template rendering analysis, session monitoring, and comprehensive view-level performance metrics.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

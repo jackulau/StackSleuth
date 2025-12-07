@@ -172,7 +172,9 @@ class SessionReplayAgent {
                         window._stacksleuth_replay_agent?.recordNetworkRequest(networkEvent);
                     }
                     if (originalOnReadyStateChange) {
-                        originalOnReadyStateChange.call(xhr, new Event('readystatechange'));
+                        // Create a proper event for the callback
+                        const event = new Event('readystatechange');
+                        originalOnReadyStateChange.call(xhr, event);
                     }
                 };
             }

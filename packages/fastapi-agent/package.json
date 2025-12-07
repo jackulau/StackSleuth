@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/fastapi-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Python FastAPI performance monitoring agent - Route-level tracing, WebSocket integration, request/response profiling, middleware performance analysis, and real-time API metrics collection.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
