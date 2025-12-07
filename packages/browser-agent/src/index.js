@@ -179,14 +179,46 @@ class BrowserAgent {
         page.on('load', async () => {
             try {
                 const metrics = await page.evaluate(() => {
-                    const navigation = performance.getEntriesByType('navigation')[0];
-                    const paint = performance.getEntriesByType('paint');
-                    return {
-                        domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
-                        loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
-                        firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
-                        largestContentfulPaint: 0 // Would need additional setup
-                    };
+                    return new Promise((resolve) => {
+                        const navigation = performance.getEntriesByType('navigation')[0];
+                        const paint = performance.getEntriesByType('paint');
+                        // Try to get LCP from existing entries
+                        const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
+                        const existingLCP = lcpEntries.length > 0
+                            ? lcpEntries[lcpEntries.length - 1].startTime
+                            : 0;
+                        const result = {
+                            domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+                            loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
+                            firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
+                            largestContentfulPaint: existingLCP
+                        };
+                        // If LCP not available, try to observe it briefly
+                        if (existingLCP === 0 && 'PerformanceObserver' in window) {
+                            try {
+                                const observer = new PerformanceObserver((list) => {
+                                    const entries = list.getEntries();
+                                    const lastEntry = entries[entries.length - 1];
+                                    if (lastEntry) {
+                                        result.largestContentfulPaint = lastEntry.startTime;
+                                    }
+                                    observer.disconnect();
+                                    resolve(result);
+                                });
+                                observer.observe({ type: 'largest-contentful-paint', buffered: true });
+                                setTimeout(() => {
+                                    observer.disconnect();
+                                    resolve(result);
+                                }, 500);
+                            }
+                            catch (e) {
+                                resolve(result);
+                            }
+                        }
+                        else {
+                            resolve(result);
+                        }
+                    });
                 });
                 this.profiler.recordMetric('browser_page_performance', {
                     sessionId: session.id,
@@ -417,16 +449,49 @@ class BrowserAgent {
                 }
             }
         });
-        // Get performance metrics
+        // Get performance metrics including LCP via PerformanceObserver
         const performance = await session.page.evaluate(() => {
-            const navigation = window.performance.getEntriesByType('navigation')[0];
-            const paint = window.performance.getEntriesByType('paint');
-            return {
-                domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
-                loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
-                firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
-                largestContentfulPaint: 0 // Would need additional setup
-            };
+            return new Promise((resolve) => {
+                const navigation = window.performance.getEntriesByType('navigation')[0];
+                const paint = window.performance.getEntriesByType('paint');
+                // Try to get LCP from existing entries first
+                const lcpEntries = window.performance.getEntriesByType('largest-contentful-paint');
+                const existingLCP = lcpEntries.length > 0
+                    ? lcpEntries[lcpEntries.length - 1].startTime
+                    : 0;
+                const result = {
+                    domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+                    loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
+                    firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
+                    largestContentfulPaint: existingLCP
+                };
+                // If LCP not yet available, try to observe it briefly
+                if (existingLCP === 0 && 'PerformanceObserver' in window) {
+                    try {
+                        const observer = new PerformanceObserver((list) => {
+                            const entries = list.getEntries();
+                            const lastEntry = entries[entries.length - 1];
+                            if (lastEntry) {
+                                result.largestContentfulPaint = lastEntry.startTime;
+                            }
+                            observer.disconnect();
+                            resolve(result);
+                        });
+                        observer.observe({ type: 'largest-contentful-paint', buffered: true });
+                        // Timeout fallback
+                        setTimeout(() => {
+                            observer.disconnect();
+                            resolve(result);
+                        }, 500);
+                    }
+                    catch (e) {
+                        resolve(result);
+                    }
+                }
+                else {
+                    resolve(result);
+                }
+            });
         });
         const loadTime = Date.now() - startTime;
         return {

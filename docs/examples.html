@@ -3,62 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StackSleuth - Examples</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/examples.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <title>Examples - StackSleuth</title>
+    <link rel="stylesheet" href="css/gitbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <style>
+        .example-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            background: var(--bg-tertiary);
+        }
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .examples-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .example-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .example-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .example-card.hidden {
+            display: none;
+        }
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .example-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .example-tag.react { background: #61dafb; color: #000; }
+        .example-tag.vue { background: #42b883; color: #fff; }
+        .example-tag.node { background: #339933; color: #fff; }
+        .example-tag.redis { background: #dc382d; color: #fff; }
+        .example-tag.fullstack { background: #6f42c1; color: #fff; }
+        .example-tag.browser { background: #ff6b6b; color: #fff; }
+        .example-content {
+            margin-top: 1rem;
+        }
+        .example-content h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .metrics-preview, .performance-tips {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .pattern-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .pattern-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .pattern-card:hover {
+            transform: translateY(-4px);
+        }
+        .pattern-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .pattern-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <img src="logo.svg" alt="StackSleuth">
-                    <span>StackSleuth</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="getting-started.html">Getting Started</a></li>
-                    <li><a href="packages.html">Packages</a></li>
-                    <li><a href="api-reference.html">API Reference</a></li>
-                    <li><a href="examples.html" class="active">Examples</a></li>
-                    <li><a href="configuration.html">Configuration</a></li>
-                    <li><a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank"><i class="fab fa-github"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="examples-hero">
-        <div class="container">
-            <h1>Examples & Use Cases</h1>
-            <p>Real-world implementations of StackSleuth across different technologies</p>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <img src="logo.svg" alt="StackSleuth">
+            <span>StackSleuth</span>
         </div>
     </div>
 
-    <div class="container examples-container">
-        <div class="example-filters">
-            <button class="filter-btn active" data-filter="all">All Examples</button>
-            <button class="filter-btn" data-filter="react">React</button>
-            <button class="filter-btn" data-filter="vue">Vue</button>
-            <button class="filter-btn" data-filter="backend">Backend</button>
-            <button class="filter-btn" data-filter="database">Database</button>
-            <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-        </div>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-        <div class="examples-grid">
-            <!-- React E-commerce Example -->
-            <div class="example-card" data-category="react">
-                <div class="example-header">
-                    <h3>React E-commerce Performance</h3>
-                    <span class="example-tag react">React</span>
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <nav class="gitbook-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <img src="logo.svg" alt="StackSleuth">
+                    <span>StackSleuth</span>
+                </a>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Getting Started</div>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home icon"></i>
+                            Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="getting-started.html" class="nav-link">
+                            <i class="fas fa-rocket icon"></i>
+                            Quick Start
+                        </a>
+                    </div>
                 </div>
-                <p>Monitor performance in a React e-commerce application with dynamic product listings and checkout flow.</p>
-                
-                <div class="example-content">
-                    <h4>Setup</h4>
-                    <pre class="language-javascript"><code>// app.js
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Packages</div>
+                    <div class="nav-item">
+                        <a href="packages.html" class="nav-link">
+                            <i class="fas fa-box icon"></i>
+                            All Packages
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Examples</div>
+                    <div class="nav-item">
+                        <a href="examples.html" class="nav-link active">
+                            <i class="fas fa-book icon"></i>
+                            Examples Overview
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Documentation</div>
+                    <div class="nav-item">
+                        <a href="api-reference.html" class="nav-link">
+                            <i class="fas fa-code icon"></i>
+                            API Reference
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="configuration.html" class="nav-link">
+                            <i class="fas fa-cog icon"></i>
+                            Configuration
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <div class="nav-item">
+                        <a href="https://github.com/Jack-GitHub12/StackSleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-github icon"></i>
+                            GitHub Repository
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.npmjs.com/org/stacksleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-npm icon"></i>
+                            NPM Packages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="gitbook-content">
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <i class="fas fa-home"></i>
+                    <span>Documentation</span>
+                    <span>/</span>
+                    <span>Examples</span>
+                </div>
+                <div class="actions">
+                    <div class="header-search">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search examples..." id="header-search">
+                    </div>
+                    <a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <h1 class="content-title">Examples & Use Cases</h1>
+                    <p class="content-subtitle">Real-world implementations of StackSleuth across different technologies</p>
+                </div>
+
+                <div class="example-filters">
+                    <button class="filter-btn active" data-filter="all">All Examples</button>
+                    <button class="filter-btn" data-filter="react">React</button>
+                    <button class="filter-btn" data-filter="vue">Vue</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="database">Database</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                </div>
+
+                <div class="examples-grid">
+                    <!-- React E-commerce Example -->
+                    <div class="example-card" data-category="react">
+                        <div class="example-header">
+                            <h3>React E-commerce Performance</h3>
+                            <span class="example-tag react">React</span>
+                        </div>
+                        <p>Monitor performance in a React e-commerce application with dynamic product listings and checkout flow.</p>
+
+                        <div class="example-content">
+                            <h4>Setup</h4>
+                            <pre class="language-javascript"><code>// app.js
 import { ReactAgent } from '@stacksleuth/react-agent';
 
 ReactAgent.init({
@@ -68,8 +270,8 @@ ReactAgent.init({
   componentWhitelist: ['ProductList', 'CartDrawer', 'CheckoutForm']
 });</code></pre>
 
-                    <h4>Product List Component</h4>
-                    <pre class="language-javascript"><code>import { useProfiler } from '@stacksleuth/react-agent';
+                            <h4>Product List Component</h4>
+                            <pre class="language-javascript"><code>import { useProfiler } from '@stacksleuth/react-agent';
 
 function ProductList({ category }) {
   const profiler = useProfiler('ProductList');
@@ -87,7 +289,7 @@ function ProductList({ category }) {
         setLoading(false);
       }
     };
-    
+
     fetchProducts();
   }, [category]);
 
@@ -104,29 +306,29 @@ function ProductList({ category }) {
   );
 }</code></pre>
 
-                    <div class="metrics-preview">
-                        <h4>Captured Metrics</h4>
-                        <ul>
-                            <li>Component render time: 12ms</li>
-                            <li>API fetch duration: 245ms</li>
-                            <li>Re-renders on category change: 3</li>
-                            <li>Memory usage: 4.2MB</li>
-                        </ul>
+                            <div class="metrics-preview">
+                                <h4>Captured Metrics</h4>
+                                <ul>
+                                    <li>Component render time: 12ms</li>
+                                    <li>API fetch duration: 245ms</li>
+                                    <li>Re-renders on category change: 3</li>
+                                    <li>Memory usage: 4.2MB</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Vue Dashboard Example -->
-            <div class="example-card" data-category="vue">
-                <div class="example-header">
-                    <h3>Vue Admin Dashboard</h3>
-                    <span class="example-tag vue">Vue</span>
-                </div>
-                <p>Track performance in a Vue.js admin dashboard with real-time data updates and complex state management.</p>
-                
-                <div class="example-content">
-                    <h4>Main Setup</h4>
-                    <pre class="language-javascript"><code>// main.js
+                    <!-- Vue Dashboard Example -->
+                    <div class="example-card" data-category="vue">
+                        <div class="example-header">
+                            <h3>Vue Admin Dashboard</h3>
+                            <span class="example-tag vue">Vue</span>
+                        </div>
+                        <p>Track performance in a Vue.js admin dashboard with real-time data updates and complex state management.</p>
+
+                        <div class="example-content">
+                            <h4>Main Setup</h4>
+                            <pre class="language-javascript"><code>// main.js
 import { createApp } from 'vue';
 import { VueAgent } from '@stacksleuth/vue-agent';
 
@@ -139,8 +341,8 @@ app.use(VueAgent, {
   slowComponentThreshold: 50
 });</code></pre>
 
-                    <h4>Dashboard Component</h4>
-                    <pre class="language-javascript"><code>&lt;template&gt;
+                            <h4>Dashboard Component</h4>
+                            <pre class="language-javascript"><code>&lt;template&gt;
   &lt;div class="dashboard"&gt;
     &lt;MetricsGrid :metrics="metrics" /&gt;
     &lt;RealtimeChart :data="chartData" /&gt;
@@ -154,37 +356,37 @@ import { useStackSleuth } from '@stacksleuth/vue-agent';
 export default {
   setup() {
     const { trackMethod } = useStackSleuth();
-    
+
     const loadDashboardData = trackMethod('loadDashboardData', async () => {
       const [metrics, chart, table] = await Promise.all([
         api.getMetrics(),
         api.getChartData(),
         api.getTableData()
       ]);
-      
+
       return { metrics, chart, table };
     });
-    
+
     onMounted(() => {
       loadDashboardData();
     });
   }
 }
 &lt;/script&gt;</code></pre>
-                </div>
-            </div>
+                        </div>
+                    </div>
 
-            <!-- Node.js Microservice Example -->
-            <div class="example-card" data-category="backend">
-                <div class="example-header">
-                    <h3>Node.js Microservice</h3>
-                    <span class="example-tag node">Node.js</span>
-                </div>
-                <p>Monitor Express.js microservice performance with route tracking and middleware profiling.</p>
-                
-                <div class="example-content">
-                    <h4>Express Setup</h4>
-                    <pre class="language-javascript"><code>const express = require('express');
+                    <!-- Node.js Microservice Example -->
+                    <div class="example-card" data-category="backend">
+                        <div class="example-header">
+                            <h3>Node.js Microservice</h3>
+                            <span class="example-tag node">Node.js</span>
+                        </div>
+                        <p>Monitor Express.js microservice performance with route tracking and middleware profiling.</p>
+
+                        <div class="example-content">
+                            <h4>Express Setup</h4>
+                            <pre class="language-javascript"><code>const express = require('express');
 const { BackendAgent } = require('@stacksleuth/backend-agent');
 
 const app = express();
@@ -213,20 +415,20 @@ app.post('/api/users', async (req, res) => {
     timer.end();
   }
 });</code></pre>
-                </div>
-            </div>
+                        </div>
+                    </div>
 
-            <!-- Redis Caching Example -->
-            <div class="example-card" data-category="database">
-                <div class="example-header">
-                    <h3>Redis Caching Layer</h3>
-                    <span class="example-tag redis">Redis</span>
-                </div>
-                <p>Implement performance monitoring for a Redis caching layer with hit/miss tracking.</p>
-                
-                <div class="example-content">
-                    <h4>Cache Implementation</h4>
-                    <pre class="language-javascript"><code>import { RedisAgent } from '@stacksleuth/redis-agent';
+                    <!-- Redis Caching Example -->
+                    <div class="example-card" data-category="database">
+                        <div class="example-header">
+                            <h3>Redis Caching Layer</h3>
+                            <span class="example-tag redis">Redis</span>
+                        </div>
+                        <p>Implement performance monitoring for a Redis caching layer with hit/miss tracking.</p>
+
+                        <div class="example-content">
+                            <h4>Cache Implementation</h4>
+                            <pre class="language-javascript"><code>import { RedisAgent } from '@stacksleuth/redis-agent';
 import { createClient } from 'redis';
 
 class CacheService {
@@ -238,10 +440,10 @@ class CacheService {
 
   async get(key) {
     const value = await this.client.get(key);
-    
+
     // Track cache hit/miss
     this.agent.recordMetric(value ? 'cache.hit' : 'cache.miss', 1);
-    
+
     return value;
   }
 
@@ -253,7 +455,7 @@ class CacheService {
       timer.end();
     }
   }
-  
+
   async invalidate(pattern) {
     const timer = this.agent.startTimer('cache.invalidation');
     const keys = await this.client.keys(pattern);
@@ -264,29 +466,29 @@ class CacheService {
   }
 }</code></pre>
 
-                    <div class="performance-tips">
-                        <h4>Performance Insights</h4>
-                        <ul>
-                            <li>Average cache hit rate: 87%</li>
-                            <li>Cache write latency: 2.3ms</li>
-                            <li>Peak operations/sec: 12,450</li>
-                            <li>Memory usage: 245MB</li>
-                        </ul>
+                            <div class="performance-tips">
+                                <h4>Performance Insights</h4>
+                                <ul>
+                                    <li>Average cache hit rate: 87%</li>
+                                    <li>Cache write latency: 2.3ms</li>
+                                    <li>Peak operations/sec: 12,450</li>
+                                    <li>Memory usage: 245MB</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Full Stack Example -->
-            <div class="example-card large" data-category="fullstack">
-                <div class="example-header">
-                    <h3>Full Stack SaaS Application</h3>
-                    <span class="example-tag fullstack">Full Stack</span>
-                </div>
-                <p>Complete monitoring setup for a SaaS application with React frontend, Node.js backend, and PostgreSQL database.</p>
-                
-                <div class="example-content">
-                    <h4>Frontend (React)</h4>
-                    <pre class="language-javascript"><code>// Frontend monitoring setup
+                    <!-- Full Stack Example -->
+                    <div class="example-card" data-category="fullstack">
+                        <div class="example-header">
+                            <h3>Full Stack SaaS Application</h3>
+                            <span class="example-tag fullstack">Full Stack</span>
+                        </div>
+                        <p>Complete monitoring setup for a SaaS application with React frontend, Node.js backend, and PostgreSQL database.</p>
+
+                        <div class="example-content">
+                            <h4>Frontend (React)</h4>
+                            <pre class="language-javascript"><code>// Frontend monitoring setup
 import { ReactAgent } from '@stacksleuth/react-agent';
 import { FrontendAgent } from '@stacksleuth/frontend-agent';
 
@@ -303,8 +505,8 @@ FrontendAgent.init({
   trackErrors: true
 });</code></pre>
 
-                    <h4>Backend (Node.js + Express)</h4>
-                    <pre class="language-javascript"><code>// Backend monitoring setup
+                            <h4>Backend (Node.js + Express)</h4>
+                            <pre class="language-javascript"><code>// Backend monitoring setup
 const { BackendAgent } = require('@stacksleuth/backend-agent');
 const { DatabaseAgent } = require('@stacksleuth/db-agent');
 
@@ -322,44 +524,39 @@ const dbAgent = new DatabaseAgent({
 // Apply to PostgreSQL
 dbAgent.instrumentPostgres(pgPool);</code></pre>
 
-                    <h4>Deployment Configuration</h4>
-                    <pre class="language-yaml"><code># docker-compose.yml
+                            <h4>Deployment Configuration</h4>
+                            <pre class="language-yaml"><code># docker-compose.yml
 version: '3.8'
 services:
   frontend:
     build: ./frontend
     environment:
       - REACT_APP_STACKSLEUTH_KEY=${STACKSLEUTH_KEY}
-    
+
   backend:
     build: ./backend
     environment:
       - STACKSLEUTH_KEY=${STACKSLEUTH_KEY}
       - NODE_ENV=production
-    
+
   postgres:
     image: postgres:14
     environment:
       - POSTGRES_DB=saas_db</code></pre>
-
-                    <div class="architecture-diagram">
-                        <h4>Monitoring Architecture</h4>
-                        <img src="images/fullstack-architecture.svg" alt="Full Stack Monitoring Architecture">
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Browser Automation Example -->
-            <div class="example-card" data-category="fullstack">
-                <div class="example-header">
-                    <h3>E2E Testing & Monitoring</h3>
-                    <span class="example-tag browser">Browser</span>
-                </div>
-                <p>Automated browser testing with performance monitoring for critical user journeys.</p>
-                
-                <div class="example-content">
-                    <h4>User Journey Testing</h4>
-                    <pre class="language-javascript"><code>import { BrowserAgent } from '@stacksleuth/browser-agent';
+                    <!-- Browser Automation Example -->
+                    <div class="example-card" data-category="fullstack">
+                        <div class="example-header">
+                            <h3>E2E Testing & Monitoring</h3>
+                            <span class="example-tag browser">Browser</span>
+                        </div>
+                        <p>Automated browser testing with performance monitoring for critical user journeys.</p>
+
+                        <div class="example-content">
+                            <h4>User Journey Testing</h4>
+                            <pre class="language-javascript"><code>import { BrowserAgent } from '@stacksleuth/browser-agent';
 
 const agent = new BrowserAgent({
   apiKey: process.env.STACKSLEUTH_KEY,
@@ -373,94 +570,108 @@ describe('User Registration Flow', () => {
       name: 'user-registration',
       viewport: { width: 1280, height: 720 }
     });
-    
+
     // Navigate to registration page
     await session.goto('https://app.example.com/register');
-    
+
     // Fill registration form
     await session.fill('#email', 'test@example.com');
     await session.fill('#password', 'SecurePass123!');
     await session.fill('#confirmPassword', 'SecurePass123!');
-    
+
     // Submit and wait for redirect
     const metrics = await session.measureAction('registration', async () => {
       await session.click('button[type="submit"]');
       await session.waitForURL('**/dashboard');
     });
-    
+
     expect(metrics.duration).toBeLessThan(5000);
     await session.end();
   });
 });</code></pre>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="integration-section">
-            <h2>Integration Patterns</h2>
-            
-            <div class="pattern-cards">
-                <div class="pattern-card">
-                    <i class="fas fa-layer-group"></i>
-                    <h3>Microservices</h3>
-                    <p>Distributed tracing across multiple services with correlation IDs and request tracking.</p>
-                    <a href="#" class="pattern-link">View Pattern →</a>
-                </div>
-                
-                <div class="pattern-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Mobile + API</h3>
-                    <p>Monitor mobile app performance alongside API endpoints for complete user journey tracking.</p>
-                    <a href="#" class="pattern-link">View Pattern →</a>
-                </div>
-                
-                <div class="pattern-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Real-time Analytics</h3>
-                    <p>Stream performance data to analytics platforms for custom dashboards and alerts.</p>
-                    <a href="#" class="pattern-link">View Pattern →</a>
-                </div>
-                
-                <div class="pattern-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Serverless</h3>
-                    <p>Monitor AWS Lambda, Vercel, and other serverless platforms with automatic cold start detection.</p>
-                    <a href="#" class="pattern-link">View Pattern →</a>
+                <section id="integration-patterns">
+                    <h2>Integration Patterns</h2>
+
+                    <div class="pattern-cards">
+                        <div class="pattern-card">
+                            <i class="fas fa-layer-group"></i>
+                            <h3>Microservices</h3>
+                            <p>Distributed tracing across multiple services with correlation IDs and request tracking.</p>
+                            <a href="#" class="pattern-link">View Pattern →</a>
+                        </div>
+
+                        <div class="pattern-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile + API</h3>
+                            <p>Monitor mobile app performance alongside API endpoints for complete user journey tracking.</p>
+                            <a href="#" class="pattern-link">View Pattern →</a>
+                        </div>
+
+                        <div class="pattern-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Real-time Analytics</h3>
+                            <p>Stream performance data to analytics platforms for custom dashboards and alerts.</p>
+                            <a href="#" class="pattern-link">View Pattern →</a>
+                        </div>
+
+                        <div class="pattern-card">
+                            <i class="fas fa-cloud"></i>
+                            <h3>Serverless</h3>
+                            <p>Monitor AWS Lambda, Vercel, and other serverless platforms with automatic cold start detection.</p>
+                            <a href="#" class="pattern-link">View Pattern →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Navigation -->
+                <div class="content-footer">
+                    <a href="configuration.html" class="footer-nav footer-nav-prev">
+                        <i class="fas fa-arrow-left icon"></i>
+                        <span>Previous: Configuration</span>
+                    </a>
+                    <a href="packages.html" class="footer-nav">
+                        <span>Next: All Packages</span>
+                        <i class="fas fa-arrow-right icon"></i>
+                    </a>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>StackSleuth</h4>
-                    <p>Advanced performance monitoring for modern applications</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Documentation</a></li>
-                        <li><a href="api-reference.html">API Reference</a></li>
-                        <li><a href="examples.html">Examples</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://github.com/Jack-GitHub12/StackSleuth">GitHub</a></li>
-                        <li><a href="https://www.npmjs.com/org/stacksleuth">NPM</a></li>
-                        <li><a href="https://discord.gg/stacksleuth">Discord</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
-    <script src="js/examples.js"></script>
+    <script src="js/gitbook.js"></script>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const exampleCards = document.querySelectorAll('.example-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter cards
+                    exampleCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>

@@ -4,95 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting Started - StackSleuth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gitbook.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <style>
-        .guide-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .step {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .step-number {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: #4A90E2;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .architecture-diagram {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .architecture-diagram img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="logo.svg" alt="StackSleuth Logo" class="logo">
-                <span>StackSleuth</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="getting-started.html" class="active">Getting Started</a></li>
-                <li><a href="configuration.html">Configuration</a></li>
-                <li><a href="api-reference.html">API Reference</a></li>
-                <li><a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank">GitHub</a></li>
-            </ul>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <img src="logo.svg" alt="StackSleuth">
+            <span>StackSleuth</span>
         </div>
-    </nav>
+    </div>
 
-    <div class="guide-content">
-        <h1>Getting Started with StackSleuth</h1>
-        <p class="lead">Follow this guide to get StackSleuth up and running in your application in minutes.</p>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-        <div class="step">
-            <div class="step-number">1</div>
-            <h2>Choose Your Architecture</h2>
-            <p>StackSleuth supports multiple deployment architectures:</p>
-            
-            <h3>Option A: Cloud-Hosted (Recommended)</h3>
-            <p>Use our cloud-hosted API service for zero-maintenance monitoring:</p>
-            <pre><code class="language-javascript">const agent = new BackendAgent({
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <nav class="gitbook-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <img src="logo.svg" alt="StackSleuth">
+                    <span>StackSleuth</span>
+                </a>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Getting Started</div>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home icon"></i>
+                            Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="getting-started.html" class="nav-link active">
+                            <i class="fas fa-rocket icon"></i>
+                            Quick Start
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#installation" class="nav-link">
+                            <i class="fas fa-download icon"></i>
+                            Installation
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Packages</div>
+                    <div class="nav-item">
+                        <a href="packages.html" class="nav-link">
+                            <i class="fas fa-box icon"></i>
+                            All Packages
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Examples</div>
+                    <div class="nav-item">
+                        <a href="examples.html" class="nav-link">
+                            <i class="fas fa-book icon"></i>
+                            Examples Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-react.html" class="nav-link">
+                            <i class="fab fa-react icon"></i>
+                            React Examples
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-vue.html" class="nav-link">
+                            <i class="fab fa-vuejs icon"></i>
+                            Vue Examples
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-node.html" class="nav-link">
+                            <i class="fab fa-node-js icon"></i>
+                            Node.js Examples
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Documentation</div>
+                    <div class="nav-item">
+                        <a href="api-reference.html" class="nav-link">
+                            <i class="fas fa-code icon"></i>
+                            API Reference
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="configuration.html" class="nav-link">
+                            <i class="fas fa-cog icon"></i>
+                            Configuration
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <div class="nav-item">
+                        <a href="https://github.com/Jack-GitHub12/StackSleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-github icon"></i>
+                            GitHub Repository
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.npmjs.com/org/stacksleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-npm icon"></i>
+                            NPM Packages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="gitbook-content">
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i></a>
+                    <span>/</span>
+                    <span>Getting Started</span>
+                </div>
+                <div class="actions">
+                    <a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <h1 class="content-title">Getting Started with StackSleuth</h1>
+                    <p class="content-subtitle">Follow this guide to get StackSleuth up and running in your application in minutes.</p>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-title">Quick Setup</div>
+                    <p>StackSleuth can be integrated into your existing project in under 5 minutes. Choose your architecture and follow the steps below.</p>
+                </div>
+
+                <!-- Step 1 -->
+                <section id="architecture">
+                    <h2>Step 1: Choose Your Architecture</h2>
+                    <p>StackSleuth supports multiple deployment architectures to fit your needs:</p>
+
+                    <h3>Option A: Cloud-Hosted (Recommended)</h3>
+                    <p>Use our cloud-hosted API service for zero-maintenance monitoring:</p>
+                    <pre class="language-javascript"><code>const agent = new BackendAgent({
     apiEndpoint: 'https://api.stacksleuth.com',
     projectId: 'your-project-id',
     apiKey: 'your-api-key'
 });</code></pre>
 
-            <h3>Option B: Self-Hosted</h3>
-            <p>Run the StackSleuth API service on your own infrastructure:</p>
-            <pre><code class="language-bash">npm install @stacksleuth/api
+                    <h3>Option B: Self-Hosted</h3>
+                    <p>Run the StackSleuth API service on your own infrastructure:</p>
+                    <pre class="language-bash"><code>npm install @stacksleuth/api
 npx stacksleuth-api start --port 3000</code></pre>
-        </div>
+                </section>
 
-        <div class="step">
-            <div class="step-number">2</div>
-            <h2>Install Core Packages</h2>
-            <p>Install the core package and the agents you need:</p>
-            
-            <h3>For Node.js Applications</h3>
-            <pre><code class="language-bash">npm install @stacksleuth/core @stacksleuth/backend-agent</code></pre>
+                <!-- Step 2 -->
+                <section id="installation">
+                    <h2>Step 2: Install Core Packages</h2>
+                    <p>Install the core package and the agents you need:</p>
 
-            <h3>For Frontend Applications</h3>
-            <pre><code class="language-bash"># For general frontend apps
-npm install @stacksleuth/frontend-agent
+                    <h3>For Node.js Applications</h3>
+                    <pre class="language-bash"><code>npm install @stacksleuth/core @stacksleuth/backend-agent</code></pre>
+
+                    <h3>For Frontend Applications</h3>
+                    <pre class="language-bash"><code># For React
+npm install @stacksleuth/react-agent
 
 # For Vue.js
 npm install @stacksleuth/vue-agent
@@ -100,47 +200,53 @@ npm install @stacksleuth/vue-agent
 # For Svelte
 npm install @stacksleuth/svelte-agent</code></pre>
 
-            <h3>For Databases</h3>
-            <pre><code class="language-bash"># Universal database agent
+                    <h3>For Databases</h3>
+                    <pre class="language-bash"><code># Universal database agent
 npm install @stacksleuth/db-agent
 
 # Specific database agents
 npm install @stacksleuth/mongodb-agent
 npm install @stacksleuth/redis-agent
 npm install @stacksleuth/mysql-agent</code></pre>
-        </div>
+                </section>
 
-        <div class="step">
-            <div class="step-number">3</div>
-            <h2>Basic Configuration</h2>
-            <p>Configure your agent with minimal settings:</p>
-            
-            <pre><code class="language-javascript">import { BackendAgent } from '@stacksleuth/backend-agent';
+                <!-- Step 3 -->
+                <section id="configuration">
+                    <h2>Step 3: Basic Configuration</h2>
+                    <p>Configure your agent with minimal settings:</p>
+
+                    <pre class="language-javascript"><code>import { BackendAgent } from '@stacksleuth/backend-agent';
 
 const agent = new BackendAgent({
     // Required settings
     enabled: true,
     projectId: 'my-awesome-app',
-    
+
     // Optional settings
     sampleRate: 0.1,  // Sample 10% of requests
     enableTracing: true,
     enableMetrics: true,
-    
+
     // Performance thresholds
     thresholds: {
         responseTime: 1000,  // Alert if response > 1s
         errorRate: 0.05      // Alert if error rate > 5%
     }
 });</code></pre>
-        </div>
 
-        <div class="step">
-            <div class="step-number">4</div>
-            <h2>Integrate with Your Framework</h2>
-            
-            <h3>Express.js</h3>
-            <pre><code class="language-javascript">import express from 'express';
+                    <div class="callout warning">
+                        <div class="callout-title">Environment Variables</div>
+                        <p>Never hardcode API keys. Use environment variables for sensitive configuration:</p>
+                        <pre class="language-javascript"><code>apiKey: process.env.STACKSLEUTH_API_KEY</code></pre>
+                    </div>
+                </section>
+
+                <!-- Step 4 -->
+                <section id="integration">
+                    <h2>Step 4: Integrate with Your Framework</h2>
+
+                    <h3>Express.js</h3>
+                    <pre class="language-javascript"><code>import express from 'express';
 import { BackendAgent } from '@stacksleuth/backend-agent';
 
 const app = express();
@@ -159,8 +265,25 @@ app.get('/api/users', (req, res) => {
 
 app.listen(3000);</code></pre>
 
-            <h3>Vue.js</h3>
-            <pre><code class="language-javascript">import { createApp } from 'vue';
+                    <h3>React</h3>
+                    <pre class="language-javascript"><code>import { ReactAgent } from '@stacksleuth/react-agent';
+
+ReactAgent.init({
+    apiKey: process.env.REACT_APP_STACKSLEUTH_KEY,
+    trackRenders: true,
+    trackStateChanges: true
+});
+
+function App() {
+    return (
+        &lt;ReactAgent.Provider&gt;
+            {/* Your app components */}
+        &lt;/ReactAgent.Provider&gt;
+    );
+}</code></pre>
+
+                    <h3>Vue.js</h3>
+                    <pre class="language-javascript"><code>import { createApp } from 'vue';
 import { VueAgent } from '@stacksleuth/vue-agent';
 import App from './App.vue';
 
@@ -177,8 +300,8 @@ agent.startMonitoring();
 
 app.mount('#app');</code></pre>
 
-            <h3>Django</h3>
-            <pre><code class="language-python"># settings.py
+                    <h3>Django</h3>
+                    <pre class="language-python"><code># settings.py
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -196,18 +319,18 @@ STACKSLEUTH = {
     'PROJECT_ID': 'my-django-app',
     'SAMPLE_RATE': 0.1,
 }</code></pre>
-        </div>
+                </section>
 
-        <div class="step">
-            <div class="step-number">5</div>
-            <h2>View Your Metrics</h2>
-            <p>Once integrated, you can view your metrics in several ways:</p>
-            
-            <h3>Option 1: StackSleuth Dashboard</h3>
-            <p>Access the web dashboard at <code>https://dashboard.stacksleuth.com</code></p>
-            
-            <h3>Option 2: CLI</h3>
-            <pre><code class="language-bash"># Install CLI
+                <!-- Step 5 -->
+                <section id="view-metrics">
+                    <h2>Step 5: View Your Metrics</h2>
+                    <p>Once integrated, you can view your metrics in several ways:</p>
+
+                    <h3>Option 1: StackSleuth Dashboard</h3>
+                    <p>Access the web dashboard at <code>https://dashboard.stacksleuth.com</code></p>
+
+                    <h3>Option 2: CLI</h3>
+                    <pre class="language-bash"><code># Install CLI
 npm install -g @stacksleuth/cli
 
 # View real-time metrics
@@ -216,8 +339,8 @@ stacksleuth metrics --project my-awesome-app
 # View traces
 stacksleuth traces --project my-awesome-app --limit 50</code></pre>
 
-            <h3>Option 3: API</h3>
-            <pre><code class="language-javascript">// Get metrics programmatically
+                    <h3>Option 3: API</h3>
+                    <pre class="language-javascript"><code>// Get metrics programmatically
 const response = await fetch('https://api.stacksleuth.com/metrics', {
     headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -226,14 +349,14 @@ const response = await fetch('https://api.stacksleuth.com/metrics', {
 });
 
 const metrics = await response.json();</code></pre>
-        </div>
+                </section>
 
-        <div class="step">
-            <div class="step-number">6</div>
-            <h2>Set Up Alerts</h2>
-            <p>Configure alerts to get notified of performance issues:</p>
-            
-            <pre><code class="language-javascript">agent.setAlert({
+                <!-- Step 6 -->
+                <section id="alerts">
+                    <h2>Step 6: Set Up Alerts</h2>
+                    <p>Configure alerts to get notified of performance issues:</p>
+
+                    <pre class="language-javascript"><code>agent.setAlert({
     name: 'High Response Time',
     condition: 'responseTime > 1000',
     actions: ['email', 'slack'],
@@ -247,81 +370,99 @@ agent.setAlert({
     actions: ['pagerduty'],
     severity: 'critical'
 });</code></pre>
-        </div>
+                </section>
 
-        <div class="architecture-diagram">
-            <h2>Architecture Overview</h2>
-            <pre class="language-mermaid">
-graph TB
-    subgraph "Your Application"
-        FE[Frontend<br/>Vue/React/Svelte]
-        BE[Backend<br/>Express/Django/Laravel]
-        DB[(Database<br/>MongoDB/MySQL/Redis)]
-    end
-    
-    subgraph "StackSleuth Agents"
-        FA[Frontend Agent]
-        BA[Backend Agent]
-        DA[Database Agent]
-    end
-    
-    subgraph "StackSleuth Core"
-        API[API Service]
-        M[Metrics Store]
-        T[Trace Store]
-        A[Alert Engine]
-    end
-    
-    subgraph "Visualization"
-        D[Dashboard]
-        CLI[CLI Tool]
-        EXT[Browser Extension]
-    end
-    
-    FE --> FA
-    BE --> BA
-    DB --> DA
-    
-    FA --> API
-    BA --> API
-    DA --> API
-    
-    API --> M
-    API --> T
-    API --> A
-    
-    M --> D
-    T --> D
-    M --> CLI
-    T --> CLI
-    
-    FA -.-> EXT
-            </pre>
-        </div>
+                <!-- Architecture Diagram -->
+                <section id="architecture-diagram">
+                    <h2>Architecture Overview</h2>
 
-        <div class="next-steps">
-            <h2>Next Steps</h2>
-            <ul>
-                <li><a href="configuration.html">Advanced Configuration</a> - Fine-tune StackSleuth for your needs</li>
-                <li><a href="best-practices.html">Best Practices</a> - Learn optimization techniques</li>
-                <li><a href="api-reference.html">API Reference</a> - Detailed API documentation</li>
-                <li><a href="troubleshooting.html">Troubleshooting</a> - Common issues and solutions</li>
-            </ul>
-        </div>
+                    <div class="callout info">
+                        <div class="callout-title">How It Works</div>
+                        <p>StackSleuth agents collect performance data from your application layers and send it to a central API for analysis and visualization.</p>
+                    </div>
+
+                    <pre class="language-text"><code>
+┌─────────────────────────────────────────────────────────────┐
+│                    YOUR APPLICATION                          │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│   Frontend      │    Backend      │      Database           │
+│   (React/Vue)   │   (Express)     │   (MongoDB/Redis)       │
+└────────┬────────┴────────┬────────┴────────┬────────────────┘
+         │                 │                 │
+         ▼                 ▼                 ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  STACKSLEUTH AGENTS                          │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│  Frontend Agent │  Backend Agent  │   Database Agent        │
+└────────┬────────┴────────┬────────┴────────┬────────────────┘
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  STACKSLEUTH CORE                            │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│   API Service   │  Metrics Store  │    Alert Engine         │
+└────────┬────────┴────────┬────────┴────────┬────────────────┘
+         │                 │                 │
+         ▼                 ▼                 ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   VISUALIZATION                              │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│    Dashboard    │      CLI        │   Browser Extension     │
+└─────────────────┴─────────────────┴─────────────────────────┘
+                    </code></pre>
+                </section>
+
+                <!-- Next Steps -->
+                <section id="next-steps">
+                    <h2>Next Steps</h2>
+
+                    <div class="feature-cards">
+                        <a href="configuration.html" class="feature-card">
+                            <i class="fas fa-cog"></i>
+                            <h4>Advanced Configuration</h4>
+                            <p>Fine-tune StackSleuth for your specific needs</p>
+                        </a>
+
+                        <a href="api-reference.html" class="feature-card">
+                            <i class="fas fa-code"></i>
+                            <h4>API Reference</h4>
+                            <p>Detailed API documentation for all agents</p>
+                        </a>
+
+                        <a href="examples.html" class="feature-card">
+                            <i class="fas fa-book"></i>
+                            <h4>Examples</h4>
+                            <p>Real-world implementation examples</p>
+                        </a>
+
+                        <a href="packages.html" class="feature-card">
+                            <i class="fas fa-box"></i>
+                            <h4>All Packages</h4>
+                            <p>Browse all available StackSleuth packages</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Footer Navigation -->
+                <div class="content-footer">
+                    <a href="index.html" class="footer-nav prev">
+                        <i class="fas fa-arrow-left icon"></i>
+                        <span>Previous: Overview</span>
+                    </a>
+                    <a href="packages.html" class="footer-nav next">
+                        <span>Next: Packages</span>
+                        <i class="fas fa-arrow-right icon"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2024 StackSleuth. MIT License.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-bash.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="js/gitbook.js"></script>
 </body>
-</html> 
+</html>

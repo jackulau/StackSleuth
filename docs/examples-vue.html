@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Examples - StackSleuth</title>
+    <link rel="stylesheet" href="css/gitbook.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <img src="logo.svg" alt="StackSleuth">
+            <span>StackSleuth</span>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <nav class="gitbook-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <img src="logo.svg" alt="StackSleuth">
+                    <span>StackSleuth</span>
+                </a>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Getting Started</div>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home icon"></i>
+                            Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="getting-started.html" class="nav-link">
+                            <i class="fas fa-rocket icon"></i>
+                            Quick Start
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Packages</div>
+                    <div class="nav-item">
+                        <a href="packages.html" class="nav-link">
+                            <i class="fas fa-box icon"></i>
+                            All Packages
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Examples</div>
+                    <div class="nav-item">
+                        <a href="examples.html" class="nav-link">
+                            <i class="fas fa-book icon"></i>
+                            Examples Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-react.html" class="nav-link">
+                            <i class="fab fa-react icon"></i>
+                            React Examples
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-vue.html" class="nav-link active">
+                            <i class="fab fa-vuejs icon"></i>
+                            Vue Examples
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="examples-node.html" class="nav-link">
+                            <i class="fab fa-node-js icon"></i>
+                            Node.js Examples
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Documentation</div>
+                    <div class="nav-item">
+                        <a href="api-reference.html" class="nav-link">
+                            <i class="fas fa-code icon"></i>
+                            API Reference
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="configuration.html" class="nav-link">
+                            <i class="fas fa-cog icon"></i>
+                            Configuration
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <div class="nav-item">
+                        <a href="https://github.com/Jack-GitHub12/StackSleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-github icon"></i>
+                            GitHub Repository
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.npmjs.com/org/stacksleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-npm icon"></i>
+                            NPM Packages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="gitbook-content">
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <a href="examples.html"><i class="fas fa-book"></i></a>
+                    <span>/</span>
+                    <span>Vue Examples</span>
+                </div>
+                <div class="actions">
+                    <a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <h1 class="content-title">Vue.js Application Examples</h1>
+                    <p class="content-subtitle">Real-world implementations of StackSleuth in Vue.js applications</p>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-title">Vue 3 Composition API</div>
+                    <p>These examples use Vue 3 with the Composition API. StackSleuth also supports Vue 2 with the Options API.</p>
+                </div>
+
+                <!-- Admin Dashboard Example -->
+                <section id="admin-dashboard">
+                    <h2>Admin Dashboard with Real-time Updates</h2>
+                    <p>This example demonstrates monitoring a Vue.js admin dashboard with Vuex state management, real-time data updates, and complex component hierarchies.</p>
+
+                    <h3>Installation</h3>
+                    <pre class="language-bash"><code>npm install @stacksleuth/vue-agent @stacksleuth/core vue@3 vuex@4</code></pre>
+
+                    <h3>main.js - Application Setup</h3>
+                    <pre class="language-javascript"><code>// src/main.js
+import { createApp } from 'vue';
+import { createStore } from 'vuex';
+import { VueAgent } from '@stacksleuth/vue-agent';
+import App from './App.vue';
+import router from './router';
+
+// Create Vuex store
+const store = createStore({
+  state: {
+    metrics: [],
+    users: [],
+    notifications: [],
+    loading: false
+  },
+  mutations: {
+    SET_METRICS(state, metrics) { state.metrics = metrics; },
+    SET_USERS(state, users) { state.users = users; },
+    ADD_NOTIFICATION(state, notification) {
+      state.notifications.push(notification);
+    },
+    SET_LOADING(state, loading) { state.loading = loading; }
+  },
+  actions: {
+    async fetchMetrics({ commit }) {
+      commit('SET_LOADING', true);
+      try {
+        const response = await fetch('/api/metrics');
+        const data = await response.json();
+        commit('SET_METRICS', data);
+      } finally {
+        commit('SET_LOADING', false);
+      }
+    }
+  }
+});
+
+// Create Vue app
+const app = createApp(App);
+
+// Initialize StackSleuth Vue Agent
+const stackSleuth = VueAgent.init({
+  apiKey: import.meta.env.VITE_STACKSLEUTH_KEY,
+  environment: import.meta.env.MODE,
+  appName: 'admin-dashboard',
+
+  // Vue-specific configuration
+  vue: {
+    trackComponents: true,
+    trackVuexMutations: true,
+    trackVuexActions: true,
+    trackRouterNavigation: true,
+    slowComponentThreshold: 50, // ms
+    componentBlacklist: ['TransitionGroup', 'KeepAlive']
+  },
+
+  // Performance thresholds
+  performanceThresholds: {
+    componentRender: 50,
+    storeAction: 1000,
+    routeNavigation: 500
+  }
+});
+
+// Install plugins
+app.use(router);
+app.use(store);
+app.use(stackSleuth);
+
+app.mount('#app');</code></pre>
+
+                    <h3>Dashboard.vue - Main Dashboard Component</h3>
+                    <pre class="language-javascript"><code>&lt;template&gt;
+  &lt;div class="dashboard"&gt;
+    &lt;header class="dashboard-header"&gt;
+      &lt;h1&gt;Admin Dashboard&lt;/h1&gt;
+      &lt;div class="header-actions"&gt;
+        &lt;button @click="refreshData" :disabled="loading"&gt;
+          &lt;i class="fas fa-sync" :class="{ 'fa-spin': loading }"&gt;&lt;/i&gt;
+          Refresh
+        &lt;/button&gt;
+        &lt;span class="last-update" v-if="lastUpdate"&gt;
+          Last updated: {{ formatTime(lastUpdate) }}
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class="dashboard-grid"&gt;
+      &lt;!-- Metrics Cards --&gt;
+      &lt;MetricCard
+        v-for="metric in metrics"
+        :key="metric.id"
+        :metric="metric"
+        @click="handleMetricClick(metric)"
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;div class="dashboard-charts"&gt;
+      &lt;RealtimeChart
+        :data="chartData"
+        @rendered="onChartRendered"
+      /&gt;
+      &lt;ActivityFeed :activities="activities" /&gt;
+    &lt;/div&gt;
+
+    &lt;DataTable
+      :columns="tableColumns"
+      :data="tableData"
+      :loading="tableLoading"
+      @sort="handleSort"
+      @filter="handleFilter"
+      @page-change="handlePageChange"
+    /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { useStore } from 'vuex';
+import { useStackSleuth } from '@stacksleuth/vue-agent';
+import MetricCard from './MetricCard.vue';
+import RealtimeChart from './RealtimeChart.vue';
+import ActivityFeed from './ActivityFeed.vue';
+import DataTable from './DataTable.vue';
+
+export default {
+  name: 'Dashboard',
+  components: { MetricCard, RealtimeChart, ActivityFeed, DataTable },
+
+  setup() {
+    const store = useStore();
+    const stackSleuth = useStackSleuth();
+
+    // State
+    const lastUpdate = ref(null);
+    const chartData = ref([]);
+    const activities = ref([]);
+    const tableData = ref([]);
+    const tableLoading = ref(false);
+    const wsConnection = ref(null);
+
+    // Computed
+    const metrics = computed(() => store.state.metrics);
+    const loading = computed(() => store.state.loading);
+
+    // Track dashboard session
+    let dashboardSession = null;
+
+    onMounted(async () => {
+      // Start dashboard session tracking
+      dashboardSession = stackSleuth.startSession('dashboard-view');
+
+      // Initial data load with performance tracking
+      const loadOperation = stackSleuth.startOperation('dashboard-initial-load');
+
+      try {
+        const startTime = performance.now();
+
+        // Parallel data fetching
+        await Promise.all([
+          store.dispatch('fetchMetrics'),
+          fetchChartData(),
+          fetchActivities(),
+          fetchTableData()
+        ]);
+
+        const loadTime = performance.now() - startTime;
+
+        loadOperation.setMetadata({
+          loadTime,
+          metricsCount: metrics.value.length,
+          activitiesCount: activities.value.length,
+          tableRowCount: tableData.value.length
+        });
+
+        loadOperation.complete('success');
+        lastUpdate.value = Date.now();
+
+        // Track performance threshold
+        if (loadTime > 2000) {
+          stackSleuth.recordEvent('slow-dashboard-load', { loadTime });
+        }
+
+      } catch (error) {
+        loadOperation.complete('error', { error: error.message });
+        stackSleuth.recordError(error, { context: 'dashboard-load' });
+      }
+
+      // Setup WebSocket for real-time updates
+      setupWebSocket();
+    });
+
+    onUnmounted(() => {
+      // End dashboard session
+      if (dashboardSession) {
+        dashboardSession.end({
+          duration: Date.now() - dashboardSession.startTime,
+          interactionsCount: dashboardSession.interactions || 0
+        });
+      }
+
+      // Cleanup WebSocket
+      if (wsConnection.value) {
+        wsConnection.value.close();
+      }
+    });
+
+    // Watch for metric changes
+    watch(metrics, (newMetrics, oldMetrics) => {
+      stackSleuth.trackEvent('metrics-updated', {
+        previousCount: oldMetrics?.length || 0,
+        newCount: newMetrics.length,
+        timestamp: Date.now()
+      });
+    });
+
+    // Methods
+    const fetchChartData = async () => {
+      const operation = stackSleuth.startOperation('fetch-chart-data');
+
+      try {
+        const response = await fetch('/api/dashboard/chart');
+        const data = await response.json();
+        chartData.value = data;
+
+        operation.setMetadata({
+          dataPoints: data.length,
+          responseSize: JSON.stringify(data).length
+        });
+
+        operation.complete('success');
+      } catch (error) {
+        operation.complete('error', { error: error.message });
+        throw error;
+      }
+    };
+
+    const fetchActivities = async () => {
+      const response = await fetch('/api/dashboard/activities');
+      activities.value = await response.json();
+    };
+
+    const fetchTableData = async () => {
+      tableLoading.value = true;
+      try {
+        const response = await fetch('/api/dashboard/table');
+        tableData.value = await response.json();
+      } finally {
+        tableLoading.value = false;
+      }
+    };
+
+    const setupWebSocket = () => {
+      const wsOperation = stackSleuth.startOperation('websocket-setup');
+
+      try {
+        wsConnection.value = new WebSocket(import.meta.env.VITE_WS_URL);
+
+        wsConnection.value.onopen = () => {
+          wsOperation.complete('success');
+          stackSleuth.trackEvent('websocket-connected');
+        };
+
+        wsConnection.value.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+
+          stackSleuth.trackEvent('realtime-update', {
+            type: data.type,
+            timestamp: Date.now(),
+            latency: Date.now() - data.serverTimestamp
+          });
+
+          // Handle different update types
+          switch (data.type) {
+            case 'metrics':
+              store.commit('SET_METRICS', data.payload);
+              break;
+            case 'activity':
+              activities.value.unshift(data.payload);
+              break;
+            case 'chart':
+              chartData.value = [...chartData.value, data.payload];
+              break;
+          }
+
+          lastUpdate.value = Date.now();
+        };
+
+        wsConnection.value.onerror = (error) => {
+          wsOperation.complete('error');
+          stackSleuth.recordError(new Error('WebSocket error'), {
+            context: 'websocket-connection'
+          });
+        };
+
+      } catch (error) {
+        wsOperation.complete('error', { error: error.message });
+      }
+    };
+
+    const refreshData = async () => {
+      const operation = stackSleuth.startOperation('manual-refresh');
+
+      stackSleuth.trackUserAction('refresh-clicked', {
+        timeSinceLastUpdate: lastUpdate.value
+          ? Date.now() - lastUpdate.value
+          : null
+      });
+
+      try {
+        await Promise.all([
+          store.dispatch('fetchMetrics'),
+          fetchChartData(),
+          fetchActivities()
+        ]);
+
+        lastUpdate.value = Date.now();
+        operation.complete('success');
+
+      } catch (error) {
+        operation.complete('error', { error: error.message });
+      }
+    };
+
+    const handleMetricClick = (metric) => {
+      stackSleuth.trackUserAction('metric-clicked', {
+        metricId: metric.id,
+        metricName: metric.name,
+        metricValue: metric.value
+      });
+    };
+
+    const onChartRendered = (renderInfo) => {
+      stackSleuth.trackEvent('chart-rendered', {
+        renderTime: renderInfo.renderTime,
+        dataPoints: renderInfo.dataPoints,
+        chartType: 'realtime'
+      });
+    };
+
+    const handleSort = (column, direction) => {
+      stackSleuth.trackUserAction('table-sort', { column, direction });
+    };
+
+    const handleFilter = (filters) => {
+      stackSleuth.trackUserAction('table-filter', {
+        filterCount: Object.keys(filters).length,
+        filters
+      });
+    };
+
+    const handlePageChange = (page) => {
+      stackSleuth.trackUserAction('table-page-change', { page });
+    };
+
+    const formatTime = (timestamp) => {
+      return new Date(timestamp).toLocaleTimeString();
+    };
+
+    return {
+      metrics,
+      loading,
+      lastUpdate,
+      chartData,
+      activities,
+      tableData,
+      tableLoading,
+      tableColumns: [
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'name', label: 'Name', sortable: true },
+        { key: 'status', label: 'Status', sortable: true },
+        { key: 'value', label: 'Value', sortable: true },
+        { key: 'updatedAt', label: 'Updated', sortable: true }
+      ],
+      refreshData,
+      handleMetricClick,
+      onChartRendered,
+      handleSort,
+      handleFilter,
+      handlePageChange,
+      formatTime
+    };
+  }
+};
+&lt;/script&gt;</code></pre>
+
+                    <h3>MetricCard.vue - Reusable Metric Component</h3>
+                    <pre class="language-javascript"><code>&lt;template&gt;
+  &lt;div
+    class="metric-card"
+    :class="{ 'metric-card--alert': isAlert }"
+    @click="$emit('click')"
+  &gt;
+    &lt;div class="metric-icon"&gt;
+      &lt;i :class="metric.icon"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="metric-content"&gt;
+      &lt;h3 class="metric-label"&gt;{{ metric.label }}&lt;/h3&gt;
+      &lt;div class="metric-value"&gt;
+        &lt;span class="value"&gt;{{ formattedValue }}&lt;/span&gt;
+        &lt;span class="trend" :class="trendClass"&gt;
+          &lt;i :class="trendIcon"&gt;&lt;/i&gt;
+          {{ metric.trend }}%
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;p class="metric-description"&gt;{{ metric.description }}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { computed, onMounted, watch } from 'vue';
+import { useStackSleuth } from '@stacksleuth/vue-agent';
+
+export default {
+  name: 'MetricCard',
+  props: {
+    metric: {
+      type: Object,
+      required: true
+    }
+  },
+  emits: ['click'],
+
+  setup(props) {
+    const stackSleuth = useStackSleuth();
+
+    // Track when metric enters viewport
+    onMounted(() => {
+      stackSleuth.trackEvent('metric-card-viewed', {
+        metricId: props.metric.id,
+        metricName: props.metric.label
+      });
+    });
+
+    // Track significant value changes
+    watch(() => props.metric.value, (newValue, oldValue) => {
+      if (oldValue !== undefined) {
+        const changePercent = ((newValue - oldValue) / oldValue) * 100;
+
+        if (Math.abs(changePercent) > 10) {
+          stackSleuth.trackEvent('metric-significant-change', {
+            metricId: props.metric.id,
+            oldValue,
+            newValue,
+            changePercent: changePercent.toFixed(2)
+          });
+        }
+      }
+    });
+
+    const formattedValue = computed(() => {
+      const value = props.metric.value;
+      if (props.metric.format === 'currency') {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        }).format(value);
+      }
+      if (props.metric.format === 'percent') {
+        return `${value}%`;
+      }
+      if (value >= 1000000) {
+        return `${(value / 1000000).toFixed(1)}M`;
+      }
+      if (value >= 1000) {
+        return `${(value / 1000).toFixed(1)}K`;
+      }
+      return value.toString();
+    });
+
+    const isAlert = computed(() => {
+      return props.metric.threshold &&
+             props.metric.value > props.metric.threshold;
+    });
+
+    const trendClass = computed(() => ({
+      'trend--up': props.metric.trend > 0,
+      'trend--down': props.metric.trend < 0,
+      'trend--neutral': props.metric.trend === 0
+    }));
+
+    const trendIcon = computed(() => {
+      if (props.metric.trend > 0) return 'fas fa-arrow-up';
+      if (props.metric.trend < 0) return 'fas fa-arrow-down';
+      return 'fas fa-minus';
+    });
+
+    return {
+      formattedValue,
+      isAlert,
+      trendClass,
+      trendIcon
+    };
+  }
+};
+&lt;/script&gt;</code></pre>
+                </section>
+
+                <!-- E-commerce Example -->
+                <section id="ecommerce">
+                    <h2>E-commerce Store with Pinia</h2>
+                    <p>This example shows a Vue 3 e-commerce application using Pinia for state management with comprehensive product tracking.</p>
+
+                    <h3>stores/cart.js - Pinia Store with Monitoring</h3>
+                    <pre class="language-javascript"><code>// src/stores/cart.js
+import { defineStore } from 'pinia';
+import { useStackSleuth } from '@stacksleuth/vue-agent';
+
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: [],
+    loading: false,
+    lastUpdated: null
+  }),
+
+  getters: {
+    itemCount: (state) => state.items.reduce((sum, item) => sum + item.quantity, 0),
+    totalPrice: (state) => state.items.reduce(
+      (sum, item) => sum + (item.price * item.quantity),
+      0
+    ),
+    isEmpty: (state) => state.items.length === 0
+  },
+
+  actions: {
+    addItem(product, quantity = 1) {
+      const stackSleuth = useStackSleuth();
+      const operation = stackSleuth.startOperation('cart-add-item');
+
+      try {
+        const existingItem = this.items.find(item => item.id === product.id);
+
+        if (existingItem) {
+          existingItem.quantity += quantity;
+
+          operation.setMetadata({
+            action: 'increment',
+            productId: product.id,
+            newQuantity: existingItem.quantity
+          });
+        } else {
+          this.items.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity
+          });
+
+          operation.setMetadata({
+            action: 'add',
+            productId: product.id,
+            quantity
+          });
+        }
+
+        this.lastUpdated = Date.now();
+
+        // Track conversion event
+        stackSleuth.trackConversion('add-to-cart', {
+          productId: product.id,
+          productName: product.name,
+          price: product.price,
+          quantity,
+          cartTotal: this.totalPrice,
+          cartItemCount: this.itemCount
+        });
+
+        operation.complete('success');
+
+      } catch (error) {
+        operation.complete('error', { error: error.message });
+        stackSleuth.recordError(error, { context: 'cart-add-item' });
+        throw error;
+      }
+    },
+
+    removeItem(productId) {
+      const stackSleuth = useStackSleuth();
+
+      const item = this.items.find(i => i.id === productId);
+      if (item) {
+        stackSleuth.trackUserAction('cart-remove-item', {
+          productId,
+          productName: item.name,
+          price: item.price,
+          quantity: item.quantity
+        });
+
+        this.items = this.items.filter(i => i.id !== productId);
+        this.lastUpdated = Date.now();
+      }
+    },
+
+    updateQuantity(productId, quantity) {
+      const stackSleuth = useStackSleuth();
+
+      const item = this.items.find(i => i.id === productId);
+      if (item) {
+        const oldQuantity = item.quantity;
+        item.quantity = Math.max(0, quantity);
+
+        stackSleuth.trackUserAction('cart-update-quantity', {
+          productId,
+          oldQuantity,
+          newQuantity: item.quantity
+        });
+
+        if (item.quantity === 0) {
+          this.removeItem(productId);
+        }
+
+        this.lastUpdated = Date.now();
+      }
+    },
+
+    async checkout() {
+      const stackSleuth = useStackSleuth();
+      const operation = stackSleuth.startOperation('checkout-process');
+
+      this.loading = true;
+
+      try {
+        const startTime = performance.now();
+
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: this.items,
+            total: this.totalPrice
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Checkout failed: ${response.status}`);
+        }
+
+        const result = await response.json();
+        const checkoutTime = performance.now() - startTime;
+
+        // Track successful checkout
+        stackSleuth.trackConversion('checkout-complete', {
+          orderId: result.orderId,
+          total: this.totalPrice,
+          itemCount: this.itemCount,
+          checkoutTime
+        });
+
+        operation.setMetadata({
+          orderId: result.orderId,
+          total: this.totalPrice,
+          itemCount: this.itemCount,
+          checkoutTime
+        });
+
+        operation.complete('success');
+
+        // Clear cart
+        this.items = [];
+        this.lastUpdated = Date.now();
+
+        return result;
+
+      } catch (error) {
+        // Track checkout failure
+        stackSleuth.trackConversion('checkout-failed', {
+          error: error.message,
+          cartTotal: this.totalPrice,
+          itemCount: this.itemCount
+        });
+
+        operation.complete('error', { error: error.message });
+        stackSleuth.recordError(error, {
+          context: 'checkout',
+          cartTotal: this.totalPrice,
+          itemCount: this.itemCount
+        });
+
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    clearCart() {
+      const stackSleuth = useStackSleuth();
+
+      stackSleuth.trackUserAction('cart-cleared', {
+        itemCount: this.itemCount,
+        totalValue: this.totalPrice
+      });
+
+      this.items = [];
+      this.lastUpdated = Date.now();
+    }
+  }
+});</code></pre>
+
+                    <h3>ProductGrid.vue - Product Listing with Performance Tracking</h3>
+                    <pre class="language-javascript"><code>&lt;template&gt;
+  &lt;div class="product-grid-container"&gt;
+    &lt;div class="filters"&gt;
+      &lt;input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search products..."
+        @input="handleSearch"
+      /&gt;
+
+      &lt;select v-model="selectedCategory" @change="handleCategoryChange"&gt;
+        &lt;option value=""&gt;All Categories&lt;/option&gt;
+        &lt;option v-for="cat in categories" :key="cat" :value="cat"&gt;
+          {{ cat }}
+        &lt;/option&gt;
+      &lt;/select&gt;
+
+      &lt;select v-model="sortBy" @change="handleSortChange"&gt;
+        &lt;option value="popularity"&gt;Most Popular&lt;/option&gt;
+        &lt;option value="price-low"&gt;Price: Low to High&lt;/option&gt;
+        &lt;option value="price-high"&gt;Price: High to Low&lt;/option&gt;
+        &lt;option value="newest"&gt;Newest First&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div v-if="loading" class="loading-state"&gt;
+      &lt;div class="spinner"&gt;&lt;/div&gt;
+      &lt;p&gt;Loading products...&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div v-else-if="filteredProducts.length === 0" class="empty-state"&gt;
+      &lt;p&gt;No products found matching your criteria.&lt;/p&gt;
+      &lt;button @click="resetFilters"&gt;Clear Filters&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div v-else class="product-grid"&gt;
+      &lt;ProductCard
+        v-for="product in filteredProducts"
+        :key="product.id"
+        :product="product"
+        @add-to-cart="handleAddToCart"
+        @view-details="handleViewDetails"
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;div v-if="hasMore" class="load-more"&gt;
+      &lt;button @click="loadMore" :disabled="loadingMore"&gt;
+        {{ loadingMore ? 'Loading...' : 'Load More' }}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, computed, onMounted, watch } from 'vue';
+import { useStackSleuth, trackPerformance } from '@stacksleuth/vue-agent';
+import { useCartStore } from '@/stores/cart';
+import ProductCard from './ProductCard.vue';
+
+const stackSleuth = useStackSleuth();
+const cartStore = useCartStore();
+
+// State
+const products = ref([]);
+const loading = ref(true);
+const loadingMore = ref(false);
+const searchQuery = ref('');
+const selectedCategory = ref('');
+const sortBy = ref('popularity');
+const page = ref(1);
+const hasMore = ref(true);
+
+// Categories
+const categories = ['Electronics', 'Clothing', 'Home', 'Sports', 'Books'];
+
+// Filtered products with performance tracking
+const filteredProducts = computed(() => {
+  const operation = stackSleuth.startOperation('filter-products');
+  const startTime = performance.now();
+
+  let result = [...products.value];
+
+  // Apply search filter
+  if (searchQuery.value) {
+    const query = searchQuery.value.toLowerCase();
+    result = result.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query)
+    );
+  }
+
+  // Apply category filter
+  if (selectedCategory.value) {
+    result = result.filter(p => p.category === selectedCategory.value);
+  }
+
+  // Apply sorting
+  result.sort((a, b) => {
+    switch (sortBy.value) {
+      case 'price-low': return a.price - b.price;
+      case 'price-high': return b.price - a.price;
+      case 'newest': return new Date(b.createdAt) - new Date(a.createdAt);
+      default: return b.popularity - a.popularity;
+    }
+  });
+
+  const filterTime = performance.now() - startTime;
+
+  operation.setMetadata({
+    originalCount: products.value.length,
+    filteredCount: result.length,
+    filterTime,
+    hasSearch: !!searchQuery.value,
+    hasCategory: !!selectedCategory.value,
+    sortBy: sortBy.value
+  });
+
+  operation.complete('success');
+
+  return result;
+});
+
+// Fetch products
+const fetchProducts = trackPerformance('fetch-products', async () => {
+  loading.value = true;
+
+  try {
+    const response = await fetch(`/api/products?page=${page.value}`);
+    const data = await response.json();
+
+    products.value = data.products;
+    hasMore.value = data.hasMore;
+
+    return {
+      productCount: data.products.length,
+      hasMore: data.hasMore
+    };
+  } finally {
+    loading.value = false;
+  }
+});
+
+// Load more products
+const loadMore = async () => {
+  loadingMore.value = true;
+  page.value++;
+
+  const operation = stackSleuth.startOperation('load-more-products');
+
+  try {
+    const response = await fetch(`/api/products?page=${page.value}`);
+    const data = await response.json();
+
+    products.value = [...products.value, ...data.products];
+    hasMore.value = data.hasMore;
+
+    operation.setMetadata({
+      page: page.value,
+      newProducts: data.products.length,
+      totalProducts: products.value.length
+    });
+
+    operation.complete('success');
+
+  } catch (error) {
+    operation.complete('error', { error: error.message });
+    page.value--;
+  } finally {
+    loadingMore.value = false;
+  }
+};
+
+// Event handlers with tracking
+const handleSearch = () => {
+  stackSleuth.trackUserAction('product-search', {
+    query: searchQuery.value,
+    queryLength: searchQuery.value.length,
+    resultCount: filteredProducts.value.length
+  });
+};
+
+const handleCategoryChange = () => {
+  stackSleuth.trackUserAction('category-filter', {
+    category: selectedCategory.value || 'all',
+    resultCount: filteredProducts.value.length
+  });
+};
+
+const handleSortChange = () => {
+  stackSleuth.trackUserAction('sort-change', {
+    sortBy: sortBy.value,
+    productCount: filteredProducts.value.length
+  });
+};
+
+const handleAddToCart = (product) => {
+  cartStore.addItem(product);
+};
+
+const handleViewDetails = (product) => {
+  stackSleuth.trackUserAction('product-view', {
+    productId: product.id,
+    productName: product.name,
+    category: product.category,
+    price: product.price
+  });
+};
+
+const resetFilters = () => {
+  stackSleuth.trackUserAction('filters-reset');
+  searchQuery.value = '';
+  selectedCategory.value = '';
+  sortBy.value = 'popularity';
+};
+
+// Initialize
+onMounted(() => {
+  fetchProducts();
+});
+
+// Track filter changes
+watch([searchQuery, selectedCategory, sortBy], () => {
+  stackSleuth.trackEvent('filters-changed', {
+    search: searchQuery.value,
+    category: selectedCategory.value,
+    sortBy: sortBy.value,
+    resultCount: filteredProducts.value.length
+  });
+}, { deep: true });
+&lt;/script&gt;</code></pre>
+                </section>
+
+                <!-- Composables -->
+                <section id="composables">
+                    <h2>Reusable Composables</h2>
+                    <p>Create reusable composition functions for common monitoring patterns.</p>
+
+                    <h3>usePerformanceMonitor.js</h3>
+                    <pre class="language-javascript"><code>// src/composables/usePerformanceMonitor.js
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { useStackSleuth } from '@stacksleuth/vue-agent';
+
+export function usePerformanceMonitor(componentName) {
+  const stackSleuth = useStackSleuth();
+  const renderCount = ref(0);
+  const lastRenderTime = ref(0);
+  const averageRenderTime = ref(0);
+  const renderTimes = [];
+
+  let mountTime = null;
+  let observer = null;
+
+  onMounted(() => {
+    mountTime = performance.now();
+
+    stackSleuth.trackEvent('component-mounted', {
+      component: componentName,
+      mountTime: mountTime
+    });
+
+    // Setup performance observer for long tasks
+    if (typeof PerformanceObserver !== 'undefined') {
+      observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > 50) {
+            stackSleuth.trackEvent('long-task-detected', {
+              component: componentName,
+              duration: entry.duration,
+              startTime: entry.startTime
+            });
+          }
+        }
+      });
+
+      observer.observe({ entryTypes: ['longtask'] });
+    }
+  });
+
+  onUnmounted(() => {
+    const lifetime = performance.now() - mountTime;
+
+    stackSleuth.trackEvent('component-unmounted', {
+      component: componentName,
+      lifetime,
+      totalRenders: renderCount.value,
+      averageRenderTime: averageRenderTime.value
+    });
+
+    if (observer) {
+      observer.disconnect();
+    }
+  });
+
+  const trackRender = () => {
+    const startTime = performance.now();
+
+    return () => {
+      const renderTime = performance.now() - startTime;
+
+      renderCount.value++;
+      lastRenderTime.value = renderTime;
+      renderTimes.push(renderTime);
+
+      averageRenderTime.value =
+        renderTimes.reduce((a, b) => a + b, 0) / renderTimes.length;
+
+      if (renderTime > 16.67) { // Slower than 60fps
+        stackSleuth.trackEvent('slow-render', {
+          component: componentName,
+          renderTime,
+          renderCount: renderCount.value
+        });
+      }
+    };
+  };
+
+  const trackOperation = (operationName, fn) => {
+    return async (...args) => {
+      const operation = stackSleuth.startOperation(
+        `${componentName}:${operationName}`
+      );
+
+      try {
+        const result = await fn(...args);
+        operation.complete('success');
+        return result;
+      } catch (error) {
+        operation.complete('error', { error: error.message });
+        throw error;
+      }
+    };
+  };
+
+  const trackUserAction = (actionName, metadata = {}) => {
+    stackSleuth.trackUserAction(actionName, {
+      component: componentName,
+      ...metadata
+    });
+  };
+
+  return {
+    renderCount,
+    lastRenderTime,
+    averageRenderTime,
+    trackRender,
+    trackOperation,
+    trackUserAction
+  };
+}
+
+export function useAsyncData(fetchFn, options = {}) {
+  const stackSleuth = useStackSleuth();
+  const data = ref(null);
+  const loading = ref(false);
+  const error = ref(null);
+
+  const {
+    operationName = 'async-data-fetch',
+    immediate = true,
+    trackPerformance = true
+  } = options;
+
+  const execute = async (...args) => {
+    loading.value = true;
+    error.value = null;
+
+    const operation = trackPerformance
+      ? stackSleuth.startOperation(operationName)
+      : null;
+
+    try {
+      const startTime = performance.now();
+      const result = await fetchFn(...args);
+      const duration = performance.now() - startTime;
+
+      data.value = result;
+
+      if (operation) {
+        operation.setMetadata({
+          duration,
+          dataSize: JSON.stringify(result).length
+        });
+        operation.complete('success');
+      }
+
+      return result;
+
+    } catch (err) {
+      error.value = err;
+
+      if (operation) {
+        operation.complete('error', { error: err.message });
+      }
+
+      stackSleuth.recordError(err, { context: operationName });
+      throw err;
+
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  if (immediate) {
+    execute();
+  }
+
+  return {
+    data,
+    loading,
+    error,
+    execute,
+    refresh: execute
+  };
+}</code></pre>
+                </section>
+
+                <!-- Best Practices -->
+                <section id="best-practices">
+                    <h2>Vue.js Performance Best Practices</h2>
+
+                    <div class="callout warning">
+                        <div class="callout-title">Performance Considerations</div>
+                        <p>When implementing monitoring in Vue.js applications, be mindful of the reactive system. Avoid tracking every single reactive change to prevent performance overhead.</p>
+                    </div>
+
+                    <div class="best-practices-grid">
+                        <div class="practice-card">
+                            <h4>Use Composables</h4>
+                            <p>Create reusable composables for common monitoring patterns to keep your components clean and consistent.</p>
+                        </div>
+
+                        <div class="practice-card">
+                            <h4>Track Meaningful Events</h4>
+                            <p>Focus on business-critical events like conversions, errors, and significant user actions rather than every interaction.</p>
+                        </div>
+
+                        <div class="practice-card">
+                            <h4>Debounce Frequent Events</h4>
+                            <p>For events that fire frequently (like scroll or input), use debouncing to reduce the volume of tracked events.</p>
+                        </div>
+
+                        <div class="practice-card">
+                            <h4>Monitor Vuex/Pinia Actions</h4>
+                            <p>Track state management actions to understand data flow and identify slow operations in your store.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Navigation -->
+                <div class="content-footer">
+                    <a href="examples-react.html" class="footer-nav prev">
+                        <i class="fas fa-arrow-left icon"></i>
+                        <span>Previous: React Examples</span>
+                    </a>
+                    <a href="examples-node.html" class="footer-nav next">
+                        <span>Next: Node.js Examples</span>
+                        <i class="fas fa-arrow-right icon"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="js/gitbook.js"></script>
+</body>
+</html>

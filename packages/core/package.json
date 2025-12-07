@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/core",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced TypeScript-based core profiling engine for StackSleuth - Real-time performance monitoring with flexible profiler, span tracing, and unified agent architecture. Features comprehensive metrics collection, memory optimization, and production-ready instrumentation.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

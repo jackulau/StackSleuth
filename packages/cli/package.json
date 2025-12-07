@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Comprehensive command-line interface for StackSleuth - Interactive dashboard, real-time monitoring, performance reports, CI/CD integration, and automated performance optimization recommendations.",
   "main": "dist/index.js",
   "bin": {

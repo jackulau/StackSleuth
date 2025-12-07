@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/session-replay",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced session replay and user interaction recording agent - DOM event capture, user journey tracking, performance correlation, and comprehensive session analytics.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

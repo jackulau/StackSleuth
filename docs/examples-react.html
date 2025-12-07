@@ -7,20 +7,68 @@
     <link rel="stylesheet" href="css/gitbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
 </head>
 <body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <img src="logo.svg" alt="StackSleuth">
+            <span>StackSleuth</span>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
     <div class="gitbook-container">
         <!-- Sidebar -->
-        <nav class="gitbook-sidebar">
+        <nav class="gitbook-sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="sidebar-logo">
                     <img src="logo.svg" alt="StackSleuth">
                     <span>StackSleuth</span>
                 </a>
             </div>
+
             <div class="sidebar-nav">
                 <div class="nav-section">
+                    <div class="nav-section-title">Getting Started</div>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home icon"></i>
+                            Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="getting-started.html" class="nav-link">
+                            <i class="fas fa-rocket icon"></i>
+                            Quick Start
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Packages</div>
+                    <div class="nav-item">
+                        <a href="packages.html" class="nav-link">
+                            <i class="fas fa-box icon"></i>
+                            All Packages
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
                     <div class="nav-section-title">Examples</div>
+                    <div class="nav-item">
+                        <a href="examples.html" class="nav-link">
+                            <i class="fas fa-book icon"></i>
+                            Examples Overview
+                        </a>
+                    </div>
                     <div class="nav-item">
                         <a href="examples-react.html" class="nav-link active">
                             <i class="fab fa-react icon"></i>
@@ -40,11 +88,63 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Documentation</div>
+                    <div class="nav-item">
+                        <a href="api-reference.html" class="nav-link">
+                            <i class="fas fa-code icon"></i>
+                            API Reference
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="configuration.html" class="nav-link">
+                            <i class="fas fa-cog icon"></i>
+                            Configuration
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <div class="nav-item">
+                        <a href="https://github.com/Jack-GitHub12/StackSleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-github icon"></i>
+                            GitHub Repository
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.npmjs.com/org/stacksleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-npm icon"></i>
+                            NPM Packages
+                        </a>
+                    </div>
+                </div>
             </div>
         </nav>
 
         <!-- Main Content -->
         <main class="gitbook-content">
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <a href="examples.html"><i class="fas fa-book"></i></a>
+                    <span>/</span>
+                    <span>React Examples</span>
+                </div>
+                <div class="actions">
+                    <a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+
             <div class="content-wrapper">
                 <div class="content-header">
                     <h1 class="content-title">React Application Examples</h1>

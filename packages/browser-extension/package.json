@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/browser-extension",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Comprehensive browser extension for real-time performance monitoring - DevTools integration, content script injection, tab performance tracking, and interactive performance visualization.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/laravel-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Comprehensive Laravel performance monitoring agent - Eloquent ORM optimization, route performance analysis, middleware tracking, job queue monitoring, and advanced cache performance metrics.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

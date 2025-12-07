@@ -3,81 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StackSleuth - NPM Packages</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/packages.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <title>NPM Packages - StackSleuth</title>
+    <link rel="stylesheet" href="css/gitbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <style>
+        .package-card {
+            background: #f8f9fa;
+            border: 1px solid #e6e8eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .package-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.25rem;
+        }
+        .package-badges {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .package-badges img {
+            height: 20px;
+        }
+        .framework-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+        .framework-badge.react { background: #61dafb; color: #000; }
+        .framework-badge.vue { background: #42b883; }
+        .framework-badge.svelte { background: #ff3e00; }
+        .framework-badge.node { background: #339933; }
+        .framework-badge.python { background: #3776ab; }
+        .framework-badge.redis { background: #dc382d; }
+        .framework-badge.mysql { background: #4479a1; }
+        .framework-badge.mongodb { background: #47a248; }
+        .framework-badge.browser { background: #4285f4; }
+        .framework-badge.cli { background: #6c757d; }
+        .package-description {
+            color: #5a6c7d;
+            margin-bottom: 1rem;
+        }
+        .install-section, .usage-section, .features-section {
+            margin-top: 1rem;
+        }
+        .install-section h4, .usage-section h4, .features-section h4 {
+            font-size: 0.9rem;
+            color: #34495e;
+            margin-bottom: 0.5rem;
+        }
+        .features-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .features-section li {
+            padding: 0.25rem 0;
+            color: #5a6c7d;
+        }
+        .features-section li i {
+            color: #27ae60;
+            margin-right: 0.5rem;
+        }
+        .package-section {
+            margin-bottom: 3rem;
+        }
+        .package-section > h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <img src="logo.svg" alt="StackSleuth">
-                    <span>StackSleuth</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="getting-started.html">Getting Started</a></li>
-                    <li><a href="packages.html" class="active">Packages</a></li>
-                    <li><a href="api-reference.html">API Reference</a></li>
-                    <li><a href="examples.html">Examples</a></li>
-                    <li><a href="configuration.html">Configuration</a></li>
-                    <li><a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank"><i class="fab fa-github"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="hero-section">
-        <div class="container">
-            <h1>NPM Packages</h1>
-            <p>Comprehensive performance monitoring agents for every stack</p>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="package-search" placeholder="Search packages...">
-            </div>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <img src="logo.svg" alt="StackSleuth">
+            <span>StackSleuth</span>
         </div>
     </div>
 
-    <div class="container packages-container">
-        <div class="packages-sidebar">
-            <h3>Categories</h3>
-            <ul class="category-list">
-                <li><a href="#core" class="active">Core</a></li>
-                <li><a href="#frontend">Frontend Frameworks</a></li>
-                <li><a href="#backend">Backend Frameworks</a></li>
-                <li><a href="#database">Database</a></li>
-                <li><a href="#browser">Browser Automation</a></li>
-                <li><a href="#tools">Tools & CLI</a></li>
-            </ul>
-        </div>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-        <div class="packages-content">
-            <!-- Core Package -->
-            <section id="core" class="package-section">
-                <h2>Core Package</h2>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/core</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/core.svg" alt="npm version">
-                            <img src="https://img.shields.io/npm/dm/@stacksleuth/core.svg" alt="downloads">
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <nav class="gitbook-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <img src="logo.svg" alt="StackSleuth">
+                    <span>StackSleuth</span>
+                </a>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Getting Started</div>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home icon"></i>
+                            Overview
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="getting-started.html" class="nav-link">
+                            <i class="fas fa-rocket icon"></i>
+                            Quick Start
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Packages</div>
+                    <div class="nav-item">
+                        <a href="packages.html" class="nav-link active">
+                            <i class="fas fa-box icon"></i>
+                            All Packages
+                        </a>
+                    </div>
+                    <div class="nav-submenu">
+                        <div class="nav-item">
+                            <a href="#core" class="nav-link">
+                                <i class="fas fa-cube icon"></i>
+                                Core
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#frontend" class="nav-link">
+                                <i class="fas fa-desktop icon"></i>
+                                Frontend
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#backend" class="nav-link">
+                                <i class="fas fa-server icon"></i>
+                                Backend
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#database" class="nav-link">
+                                <i class="fas fa-database icon"></i>
+                                Database
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#browser" class="nav-link">
+                                <i class="fas fa-globe icon"></i>
+                                Browser
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#tools" class="nav-link">
+                                <i class="fas fa-tools icon"></i>
+                                Tools & CLI
+                            </a>
                         </div>
                     </div>
-                    
-                    <p class="package-description">The foundation of StackSleuth - provides core profiling capabilities, metric collection, and integration APIs for all agents.</p>
-                    
-                    <div class="install-section">
-                        <h4>Installation</h4>
-                        <pre class="language-bash"><code>npm install @stacksleuth/core</code></pre>
-                    </div>
+                </div>
 
-                    <div class="usage-section">
-                        <h4>Basic Usage</h4>
-                        <pre class="language-javascript"><code>import { ProfilerCore } from '@stacksleuth/core';
+                <div class="nav-section">
+                    <div class="nav-section-title">Examples</div>
+                    <div class="nav-item">
+                        <a href="examples.html" class="nav-link">
+                            <i class="fas fa-book icon"></i>
+                            Examples Overview
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Documentation</div>
+                    <div class="nav-item">
+                        <a href="api-reference.html" class="nav-link">
+                            <i class="fas fa-code icon"></i>
+                            API Reference
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="configuration.html" class="nav-link">
+                            <i class="fas fa-cog icon"></i>
+                            Configuration
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <div class="nav-item">
+                        <a href="https://github.com/Jack-GitHub12/StackSleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-github icon"></i>
+                            GitHub
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.npmjs.com/org/stacksleuth" class="nav-link" target="_blank">
+                            <i class="fab fa-npm icon"></i>
+                            NPM
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="gitbook-content">
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i></a>
+                    <span>/</span>
+                    <span>Packages</span>
+                </div>
+                <div class="actions">
+                    <a href="https://www.npmjs.com/org/stacksleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-npm"></i>
+                        NPM
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <h1 class="content-title">NPM Packages</h1>
+                    <p class="content-subtitle">Comprehensive performance monitoring agents for every stack</p>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-title">Modular Architecture</div>
+                    <p>StackSleuth is designed with modularity in mind. Install only the packages you need for your specific stack.</p>
+                </div>
+
+                <!-- Core Package -->
+                <section id="core" class="package-section">
+                    <h2>Core Package</h2>
+
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/core</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/core.svg" alt="npm version">
+                                <img src="https://img.shields.io/npm/dm/@stacksleuth/core.svg" alt="downloads">
+                            </div>
+                        </div>
+
+                        <p class="package-description">The foundation of StackSleuth - provides core profiling capabilities, metric collection, and integration APIs for all agents.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/core</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Basic Usage</h4>
+                            <pre class="language-javascript"><code>import { ProfilerCore } from '@stacksleuth/core';
 
 const profiler = new ProfilerCore({
   apiKey: 'your-api-key',
@@ -92,45 +296,45 @@ profiler.captureMetric('custom.metric', 123);
 
 // Stop profiling
 const report = await profiler.stopProfiling();</code></pre>
-                    </div>
+                        </div>
 
-                    <div class="features-section">
-                        <h4>Key Features</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Unified profiling interface</li>
-                            <li><i class="fas fa-check"></i> Real-time metric collection</li>
-                            <li><i class="fas fa-check"></i> Low overhead design</li>
-                            <li><i class="fas fa-check"></i> TypeScript support</li>
-                            <li><i class="fas fa-check"></i> Extensible plugin system</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Frontend Frameworks -->
-            <section id="frontend" class="package-section">
-                <h2>Frontend Framework Agents</h2>
-                
-                <!-- React Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/react-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/react-agent.svg" alt="npm version">
-                            <span class="framework-badge react">React</span>
+                        <div class="features-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Unified profiling interface</li>
+                                <li><i class="fas fa-check"></i> Real-time metric collection</li>
+                                <li><i class="fas fa-check"></i> Low overhead design</li>
+                                <li><i class="fas fa-check"></i> TypeScript support</li>
+                                <li><i class="fas fa-check"></i> Extensible plugin system</li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Advanced React performance monitoring with component lifecycle tracking, render optimization insights, and hooks profiling.</p>
-                    
-                    <div class="install-section">
-                        <h4>Installation</h4>
-                        <pre class="language-bash"><code>npm install @stacksleuth/react-agent</code></pre>
-                    </div>
+                </section>
 
-                    <div class="usage-section">
-                        <h4>Setup</h4>
-                        <pre class="language-javascript"><code>import { ReactAgent } from '@stacksleuth/react-agent';
+                <!-- Frontend Frameworks -->
+                <section id="frontend" class="package-section">
+                    <h2>Frontend Framework Agents</h2>
+
+                    <!-- React Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/react-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/react-agent.svg" alt="npm version">
+                                <span class="framework-badge react">React</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Advanced React performance monitoring with component lifecycle tracking, render optimization insights, and hooks profiling.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/react-agent</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Setup</h4>
+                            <pre class="language-javascript"><code>import { ReactAgent } from '@stacksleuth/react-agent';
 
 // Initialize in your app entry point
 ReactAgent.init({
@@ -148,85 +352,95 @@ function App() {
     &lt;/ReactAgent.Provider&gt;
   );
 }</code></pre>
-                    </div>
-                </div>
-
-                <!-- Vue Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/vue-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/vue-agent.svg" alt="npm version">
-                            <span class="framework-badge vue">Vue</span>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Vue.js performance monitoring with component tracking, reactive system profiling, and Vuex state management insights.</p>
-                    
-                    <div class="install-section">
-                        <h4>Installation</h4>
-                        <pre class="language-bash"><code>npm install @stacksleuth/vue-agent</code></pre>
-                    </div>
-                </div>
 
-                <!-- Svelte Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/svelte-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/svelte-agent.svg" alt="npm version">
-                            <span class="framework-badge svelte">Svelte</span>
+                    <!-- Vue Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/vue-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/vue-agent.svg" alt="npm version">
+                                <span class="framework-badge vue">Vue</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Vue.js performance monitoring with component tracking, reactive system profiling, and Vuex/Pinia state management insights.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/vue-agent</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Setup</h4>
+                            <pre class="language-javascript"><code>import { createApp } from 'vue';
+import { VueAgent } from '@stacksleuth/vue-agent';
+
+const app = createApp(App);
+app.use(VueAgent, {
+  apiKey: 'your-api-key',
+  trackComponents: true,
+  trackVuexMutations: true
+});</code></pre>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Svelte performance monitoring with component lifecycle tracking, store monitoring, and compilation insights.</p>
-                    
-                    <div class="usage-section">
-                        <h4>Usage</h4>
-                        <pre class="language-javascript"><code>import { SvelteAgent } from '@stacksleuth/svelte-agent';
 
-// Initialize in your app
+                    <!-- Svelte Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/svelte-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/svelte-agent.svg" alt="npm version">
+                                <span class="framework-badge svelte">Svelte</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Svelte performance monitoring with component lifecycle tracking, store monitoring, and compilation insights.</p>
+
+                        <div class="usage-section">
+                            <h4>Usage</h4>
+                            <pre class="language-javascript"><code>import { SvelteAgent } from '@stacksleuth/svelte-agent';
+
 SvelteAgent.init({
   apiKey: 'your-api-key',
   trackStores: true,
   trackComponents: true
 });
 
-// Use in components
+// In your components
 &lt;script&gt;
-  import { onMount } from 'svelte';
   import { trackComponent } from '@stacksleuth/svelte-agent';
-  
   trackComponent('MyComponent');
 &lt;/script&gt;</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Backend Frameworks -->
-            <section id="backend" class="package-section">
-                <h2>Backend Framework Agents</h2>
-                
-                <!-- FastAPI Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/fastapi-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/fastapi-agent.svg" alt="npm version">
-                            <span class="framework-badge python">Python</span>
                         </div>
                     </div>
-                    
-                    <p class="package-description">FastAPI performance monitoring with route tracking, async operation profiling, and WebSocket monitoring.</p>
-                    
-                    <div class="install-section">
-                        <h4>Installation</h4>
-                        <pre class="language-bash"><code>pip install stacksleuth-fastapi</code></pre>
-                    </div>
+                </section>
 
-                    <div class="usage-section">
-                        <h4>Python Setup</h4>
-                        <pre class="language-python"><code>from fastapi import FastAPI
+                <!-- Backend Frameworks -->
+                <section id="backend" class="package-section">
+                    <h2>Backend Framework Agents</h2>
+
+                    <!-- FastAPI Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/fastapi-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/fastapi-agent.svg" alt="npm version">
+                                <span class="framework-badge python">Python</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">FastAPI performance monitoring with route tracking, async operation profiling, and WebSocket monitoring.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>pip install stacksleuth-fastapi</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Python Setup</h4>
+                            <pre class="language-python"><code>from fastapi import FastAPI
 from stacksleuth_fastapi import FastAPIAgent
 
 app = FastAPI()
@@ -238,42 +452,62 @@ agent.instrument_app(app)
 @app.get("/")
 async def root():
     return {"message": "Hello World"}</code></pre>
-                    </div>
-                </div>
-
-                <!-- Express Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/backend-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/backend-agent.svg" alt="npm version">
-                            <span class="framework-badge node">Node.js</span>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Universal Node.js backend monitoring supporting Express, Koa, Hapi, and more.</p>
-                </div>
-            </section>
 
-            <!-- Database Agents -->
-            <section id="database" class="package-section">
-                <h2>Database Agents</h2>
-                
-                <!-- Redis Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/redis-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/redis-agent.svg" alt="npm version">
-                            <span class="framework-badge redis">Redis</span>
+                    <!-- Backend Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/backend-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/backend-agent.svg" alt="npm version">
+                                <span class="framework-badge node">Node.js</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Universal Node.js backend monitoring supporting Express, Koa, Hapi, Fastify, and more.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/backend-agent</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Express.js Setup</h4>
+                            <pre class="language-javascript"><code>import express from 'express';
+import { BackendAgent } from '@stacksleuth/backend-agent';
+
+const app = express();
+const agent = new BackendAgent({
+  apiKey: 'your-api-key',
+  serviceName: 'my-api'
+});
+
+app.use(agent.middleware());
+agent.startMonitoring();</code></pre>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Redis performance monitoring with command-level tracking, memory analysis, and slow query detection.</p>
-                    
-                    <div class="usage-section">
-                        <h4>Usage with redis</h4>
-                        <pre class="language-javascript"><code>import { RedisAgent } from '@stacksleuth/redis-agent';
+                </section>
+
+                <!-- Database Agents -->
+                <section id="database" class="package-section">
+                    <h2>Database Agents</h2>
+
+                    <!-- Redis Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/redis-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/redis-agent.svg" alt="npm version">
+                                <span class="framework-badge redis">Redis</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Redis performance monitoring with command-level tracking, memory analysis, and slow query detection.</p>
+
+                        <div class="usage-section">
+                            <h4>Usage</h4>
+                            <pre class="language-javascript"><code>import { RedisAgent } from '@stacksleuth/redis-agent';
 import { createClient } from 'redis';
 
 const agent = new RedisAgent({ apiKey: 'your-api-key' });
@@ -285,65 +519,75 @@ agent.instrument(client);
 // Use Redis normally
 await client.set('key', 'value');
 const value = await client.get('key');</code></pre>
-                    </div>
-                </div>
-
-                <!-- MySQL Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/mysql-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/mysql-agent.svg" alt="npm version">
-                            <span class="framework-badge mysql">MySQL</span>
                         </div>
                     </div>
-                    
-                    <p class="package-description">MySQL query performance monitoring with execution plan analysis and connection pool tracking.</p>
-                </div>
 
-                <!-- MongoDB Agent -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/mongodb-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/mongodb-agent.svg" alt="npm version">
-                            <span class="framework-badge mongodb">MongoDB</span>
+                    <!-- MySQL Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/mysql-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/mysql-agent.svg" alt="npm version">
+                                <span class="framework-badge mysql">MySQL</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">MySQL query performance monitoring with execution plan analysis and connection pool tracking.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/mysql-agent</code></pre>
                         </div>
                     </div>
-                    
-                    <p class="package-description">MongoDB performance monitoring with query profiling, index usage analysis, and aggregation pipeline tracking.</p>
-                </div>
-            </section>
 
-            <!-- Browser Automation -->
-            <section id="browser" class="package-section">
-                <h2>Browser Automation Agent</h2>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/browser-agent</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/browser-agent.svg" alt="npm version">
-                            <span class="framework-badge browser">Browser</span>
+                    <!-- MongoDB Agent -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/mongodb-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/mongodb-agent.svg" alt="npm version">
+                                <span class="framework-badge mongodb">MongoDB</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">MongoDB performance monitoring with query profiling, index usage analysis, and aggregation pipeline tracking.</p>
+
+                        <div class="install-section">
+                            <h4>Installation</h4>
+                            <pre class="language-bash"><code>npm install @stacksleuth/mongodb-agent</code></pre>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Advanced browser automation with Playwright/Puppeteer integration for debugging, crawling, and user simulation.</p>
-                    
-                    <div class="features-section">
-                        <h4>Key Features</h4>
-                        <ul>
-                            <li><i class="fas fa-robot"></i> Automated browser testing</li>
-                            <li><i class="fas fa-video"></i> Session recording & replay</li>
-                            <li><i class="fas fa-spider"></i> Intelligent web crawling</li>
-                            <li><i class="fas fa-user"></i> User behavior simulation</li>
-                            <li><i class="fas fa-chart-line"></i> Performance metrics collection</li>
-                        </ul>
-                    </div>
+                </section>
 
-                    <div class="usage-section">
-                        <h4>Example: Automated Testing</h4>
-                        <pre class="language-javascript"><code>import { BrowserAgent } from '@stacksleuth/browser-agent';
+                <!-- Browser Automation -->
+                <section id="browser" class="package-section">
+                    <h2>Browser Automation Agent</h2>
+
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/browser-agent</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/browser-agent.svg" alt="npm version">
+                                <span class="framework-badge browser">Browser</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Advanced browser automation with Playwright/Puppeteer integration for debugging, crawling, and user simulation.</p>
+
+                        <div class="features-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li><i class="fas fa-robot"></i> Automated browser testing</li>
+                                <li><i class="fas fa-video"></i> Session recording & replay</li>
+                                <li><i class="fas fa-spider"></i> Intelligent web crawling</li>
+                                <li><i class="fas fa-user"></i> User behavior simulation</li>
+                                <li><i class="fas fa-chart-line"></i> Performance metrics collection</li>
+                            </ul>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Example: Automated Testing</h4>
+                            <pre class="language-javascript"><code>import { BrowserAgent } from '@stacksleuth/browser-agent';
 
 const agent = new BrowserAgent({
   apiKey: 'your-api-key',
@@ -359,33 +603,33 @@ const results = await agent.runTests({
     { action: 'screenshot', name: 'results-page' }
   ]
 });</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tools & CLI -->
-            <section id="tools" class="package-section">
-                <h2>Tools & CLI</h2>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>@stacksleuth/cli</h3>
-                        <div class="package-badges">
-                            <img src="https://img.shields.io/npm/v/@stacksleuth/cli.svg" alt="npm version">
-                            <span class="framework-badge cli">CLI</span>
                         </div>
                     </div>
-                    
-                    <p class="package-description">Command-line interface for StackSleuth configuration, monitoring, and analysis.</p>
-                    
-                    <div class="install-section">
-                        <h4>Global Installation</h4>
-                        <pre class="language-bash"><code>npm install -g @stacksleuth/cli</code></pre>
-                    </div>
+                </section>
 
-                    <div class="usage-section">
-                        <h4>Common Commands</h4>
-                        <pre class="language-bash"><code># Initialize StackSleuth in your project
+                <!-- Tools & CLI -->
+                <section id="tools" class="package-section">
+                    <h2>Tools & CLI</h2>
+
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>@stacksleuth/cli</h3>
+                            <div class="package-badges">
+                                <img src="https://img.shields.io/npm/v/@stacksleuth/cli.svg" alt="npm version">
+                                <span class="framework-badge cli">CLI</span>
+                            </div>
+                        </div>
+
+                        <p class="package-description">Command-line interface for StackSleuth configuration, monitoring, and analysis.</p>
+
+                        <div class="install-section">
+                            <h4>Global Installation</h4>
+                            <pre class="language-bash"><code>npm install -g @stacksleuth/cli</code></pre>
+                        </div>
+
+                        <div class="usage-section">
+                            <h4>Common Commands</h4>
+                            <pre class="language-bash"><code># Initialize StackSleuth in your project
 stacksleuth init
 
 # Start monitoring
@@ -399,43 +643,29 @@ stacksleuth report generate --format=html
 
 # Analyze specific time range
 stacksleuth analyze --from="2024-01-01" --to="2024-01-31"</code></pre>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
-    </div>
+                </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>StackSleuth</h4>
-                    <p>Advanced performance monitoring for modern applications</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Documentation</a></li>
-                        <li><a href="api-reference.html">API Reference</a></li>
-                        <li><a href="examples.html">Examples</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://github.com/Jack-GitHub12/StackSleuth">GitHub</a></li>
-                        <li><a href="https://www.npmjs.com/org/stacksleuth">NPM</a></li>
-                        <li><a href="https://discord.gg/stacksleuth">Discord</a></li>
-                    </ul>
+                <!-- Footer Navigation -->
+                <div class="content-footer">
+                    <a href="getting-started.html" class="footer-nav prev">
+                        <i class="fas fa-arrow-left icon"></i>
+                        <span>Previous: Getting Started</span>
+                    </a>
+                    <a href="examples.html" class="footer-nav next">
+                        <span>Next: Examples</span>
+                        <i class="fas fa-arrow-right icon"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </main>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="js/packages.js"></script>
+    <script src="js/gitbook.js"></script>
 </body>
-</html> 
+</html>

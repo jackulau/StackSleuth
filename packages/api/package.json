@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/api",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Complete StackSleuth API service - RESTful API for performance monitoring data collection, analysis, real-time dashboards, alerting, and comprehensive observability platform with multi-tenant support.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

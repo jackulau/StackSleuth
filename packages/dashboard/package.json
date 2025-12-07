@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/dashboard",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Interactive web dashboard for StackSleuth - Real-time performance visualization, comprehensive analytics, team collaboration features, and advanced monitoring capabilities.",
   "private": true,
   "scripts": {

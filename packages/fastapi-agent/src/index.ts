@@ -13,6 +13,7 @@ export interface FastAPIRouteMetrics {
   userId?: string;
   errors: string[];
   dbQueries: number;
+  dbQueryTime: number;
   cacheHits: number;
   cacheMisses: number;
 }
@@ -193,6 +194,7 @@ export class FastAPIAgent {
       userId: data.user_id,
       errors: data.errors || [],
       dbQueries: data.db_queries || 0,
+      dbQueryTime: data.db_query_time || 0,
       cacheHits: data.cache_hits || 0,
       cacheMisses: data.cache_misses || 0
     };
@@ -394,10 +396,11 @@ export class FastAPIAgent {
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
 
-    // Database stats
+    // Database stats - calculate from actual metrics
     const totalDbQueries = this.routeMetrics.reduce((sum, m) => sum + m.dbQueries, 0);
-    const avgQueryTime = 0; // Would be calculated from database query metrics
-    const slowQueries = 0; // Would be calculated from database query metrics
+    const totalDbQueryTime = this.routeMetrics.reduce((sum, m) => sum + m.dbQueryTime, 0);
+    const avgQueryTime = totalDbQueries > 0 ? totalDbQueryTime / totalDbQueries : 0;
+    const slowQueries = this.routeMetrics.filter(m => m.dbQueryTime > this.slowQueryThreshold).length;
 
     // Cache stats
     const totalCacheHits = this.routeMetrics.reduce((sum, m) => sum + m.cacheHits, 0);

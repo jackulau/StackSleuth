@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/browser-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Advanced browser automation and performance monitoring agent - Playwright/Puppeteer integration, website crawling, user interaction simulation, screenshot capture, and real-time debugging capabilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

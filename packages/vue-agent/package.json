@@ -1,6 +1,6 @@
 {
   "name": "@stacksleuth/vue-agent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Specialized Vue.js performance monitoring agent - Component lifecycle tracking, Vuex state management profiling, route performance analysis, and reactive data monitoring with Vue DevTools integration.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
