@@ -569,38 +569,45 @@ tr:last-child td {
         align-items: center;
         justify-content: space-between;
     }
-    
+
     .gitbook-sidebar {
         transform: translateX(-100%);
         z-index: 101;
     }
-    
-    .gitbook-sidebar.open {
+
+    .gitbook-sidebar.open,
+    .gitbook-sidebar.active {
         transform: translateX(0);
     }
-    
-    .sidebar-overlay.show {
+
+    .sidebar-overlay.show,
+    .sidebar-overlay.active {
         display: block;
     }
-    
+
     .gitbook-content {
         margin-left: 0;
     }
-    
+
     .gitbook-header {
         display: none;
     }
-    
+
     .content-wrapper {
         padding: 2rem 1rem;
     }
-    
+
     h1 {
         font-size: 2rem;
     }
-    
+
     h2 {
         font-size: 1.5rem;
+    }
+
+    /* Prevent body scroll when sidebar is open */
+    body.sidebar-open {
+        overflow: hidden;
     }
 }
 

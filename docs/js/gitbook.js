@@ -336,20 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Enhanced GitBook JavaScript functionality
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initializeMobileMenu();
-    initializeSearch();
-    initializeScrollProgress();
-    initializeNavigation();
-    initializeTabs();
-    initializeCopyButtons();
-    initializeTooltips();
-    
-    // Initialize performance monitoring
-    trackPagePerformance();
-});
+// (Note: Main initialization is handled by the first DOMContentLoaded listener above)
 
 // Mobile menu functionality
 function initializeMobileMenu() {
