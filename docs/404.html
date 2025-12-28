@@ -4,75 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found | StackSleuth</title>
-    <link rel="stylesheet" href="/StackSleuth/css/gitbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <style>
-        .error-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
+
         .error-content {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             max-width: 500px;
+            margin: 1rem;
             animation: fadeInUp 0.5s ease;
         }
+
         .error-code {
             font-size: 6rem;
-            font-weight: bold;
+            font-weight: 700;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin: 0;
+            line-height: 1;
         }
+
         .error-message {
             font-size: 1.5rem;
             color: #2c3e50;
             margin: 1rem 0;
+            font-weight: 600;
         }
+
         .error-description {
             color: #5a6c7d;
             margin: 1rem 0 2rem;
+            line-height: 1.6;
         }
+
         .error-actions {
             display: flex;
             gap: 1rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #5a6c7d;
+            border: 1px solid #e6e8eb;
+        }
+
+        .btn-secondary:hover {
+            background: #e6e8eb;
+            transform: translateY(-2px);
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4rem;
+            }
+
+            .error-message {
+                font-size: 1.25rem;
+            }
+
+            .error-content {
+                padding: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-content">
-            <h1 class="error-code">404</h1>
-            <h2 class="error-message">Page Not Found</h2>
-            <p class="error-description">
-                The page you're looking for doesn't exist or has been moved.
-            </p>
-            <div class="error-actions">
-                <a href="/StackSleuth/" class="btn btn-primary">
-                    <i class="fas fa-home"></i> Go Home
-                </a>
-                <a href="/StackSleuth/getting-started.html" class="btn btn-secondary">
-                    <i class="fas fa-book"></i> Documentation
-                </a>
-            </div>
+    <div class="error-content">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Page Not Found</h2>
+        <p class="error-description">
+            The page you're looking for doesn't exist or has been moved.
+            Let's get you back on track.
+        </p>
+        <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">
+                <i class="fas fa-home"></i> Go Home
+            </a>
+            <a href="getting-started.html" class="btn btn-secondary">
+                <i class="fas fa-book"></i> Documentation
+            </a>
         </div>
     </div>
 </body>

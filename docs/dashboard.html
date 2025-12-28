@@ -131,19 +131,34 @@
 
         <!-- Main Content -->
         <main class="gitbook-content">
-            <div class="gitbook-header">
-                <div class="header-title">
-                    <h1>StackSleuth Dashboard</h1>
+            <!-- Header -->
+            <header class="gitbook-header">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i></a>
+                    <span>/</span>
+                    <span>Dashboard</span>
                 </div>
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <div class="actions">
+                    <a href="https://github.com/Jack-GitHub12/StackSleuth" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
             </div>
 
             <div class="content-wrapper">
-                <article class="content-inner">
-                    <div class="content-section">
-                        <h2>📊 Real-time Performance Monitoring Dashboard</h2>
+                <div class="content-header">
+                    <h1 class="content-title">Dashboard</h1>
+                    <p class="content-subtitle">Real-time performance monitoring and visualization</p>
+                </div>
+
+                <section id="overview">
+                    <h2>Real-time Performance Monitoring Dashboard</h2>
                         <p>The StackSleuth Dashboard provides a comprehensive view of your application's performance metrics, traces, and system health in real-time.</p>
 
                         <div class="alert alert-info">
@@ -444,40 +459,22 @@ az storage blob upload-batch -s dist/ -d '$web' --account-name youraccount</code
                             <li>🐛 Report issues on <a href="https://github.com/Jack-GitHub12/StackSleuth/issues">GitHub</a></li>
                             <li>📧 Contact support at support@stacksleuth.com</li>
                         </ul>
-                    </div>
-                </article>
+                </section>
 
-                <!-- Page Navigation -->
-                <div class="page-nav">
-                    <a href="getting-started.html" class="prev-page">
-                        <i class="fas fa-arrow-left"></i>
-                        <div>
-                            <small>Previous</small>
-                            <span>Getting Started</span>
-                        </div>
+                <!-- Footer Navigation -->
+                <div class="content-footer">
+                    <a href="getting-started.html" class="footer-nav">
+                        <i class="fas fa-arrow-left icon"></i>
+                        <span>Previous: Quick Start</span>
                     </a>
-                    <a href="packages.html" class="next-page">
-                        <div>
-                            <small>Next</small>
-                            <span>Packages</span>
-                        </div>
-                        <i class="fas fa-arrow-right"></i>
+                    <a href="packages.html" class="footer-nav">
+                        <span>Next: Packages</span>
+                        <i class="fas fa-arrow-right icon"></i>
                     </a>
                 </div>
             </div>
         </main>
     </div>
-
-    <!-- Search Modal -->
-    <div class="search-modal" id="search-modal">
-        <div class="search-modal-content">
-            <input type="text" id="search-input" placeholder="Search documentation..." autofocus>
-            <div class="search-results" id="search-results"></div>
-        </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progress-bar"></div>
 
     <script src="js/gitbook.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
