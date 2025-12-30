@@ -31,12 +31,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jack-GitHub12/StackSleuth.git",
+    "url": "https://github.com/jackulau/StackSleuth.git",
     "directory": "packages/db-agent"
   },
-  "homepage": "https://github.com/Jack-GitHub12/StackSleuth/tree/main/packages/db-agent#readme",
+  "homepage": "https://github.com/jackulau/StackSleuth/tree/main/packages/db-agent#readme",
   "bugs": {
-    "url": "https://github.com/Jack-GitHub12/StackSleuth/issues"
+    "url": "https://github.com/jackulau/StackSleuth/issues"
   },
   "keywords": [
     "performance",
@@ -61,6 +61,6 @@
   "author": {
     "name": "StackSleuth Team",
     "email": "team@stacksleuth.com",
-    "url": "https://github.com/Jack-GitHub12/StackSleuth"
+    "url": "https://github.com/jackulau/StackSleuth"
   }
 }
