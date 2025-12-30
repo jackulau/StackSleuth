@@ -477,7 +477,7 @@ ProfilerCore.setErrorHandler((error) => {
 
 ## Support
 
-- GitHub Issues: https://github.com/Jack-GitHub12/StackSleuth/issues
-- Documentation: https://jack-github12.github.io/StackSleuth/
+- GitHub Issues: https://github.com/jackulau/StackSleuth/issues
+- Documentation: https://jackulau.github.io/StackSleuth/
 - Discord: Coming soon
 - Email: support@stacksleuth.dev

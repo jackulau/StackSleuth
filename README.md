@@ -9,12 +9,12 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
   [![Node.js](https://img.shields.io/badge/Node.js-18.0+-green.svg?style=flat-square)](https://nodejs.org/)
-  [![CI/CD](https://github.com/Jack-GitHub12/StackSleuth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jack-GitHub12/StackSleuth/actions)
+  [![CI/CD](https://github.com/jackulau/StackSleuth/actions/workflows/ci.yml/badge.svg)](https://github.com/jackulau/StackSleuth/actions)
   
   **Real-time performance profiling • Database monitoring • Framework agnostic • Production ready**
 
-  [📚 Documentation](https://jack-github12.github.io/StackSleuth/) • 
-  [🎯 Live Demo](https://jack-github12.github.io/StackSleuth/dashboard.html) • 
+  [📚 Documentation](https://jackulau.github.io/StackSleuth/) • 
+  [🎯 Live Demo](https://jackulau.github.io/StackSleuth/dashboard.html) • 
   [📦 NPM Packages](https://www.npmjs.com/org/stacksleuth) • 
   [🚀 Quick Start](#-quick-start)
   
@@ -402,7 +402,7 @@ We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Jack-GitHub12/StackSleuth.git
+git clone https://github.com/jackulau/StackSleuth.git
 cd StackSleuth
 
 # Install dependencies
@@ -434,11 +434,11 @@ cd examples/express-demo && npm start
 
 ## 📚 Documentation
 
-- [Getting Started Guide](https://jack-github12.github.io/StackSleuth/getting-started.html)
-- [API Reference](https://jack-github12.github.io/StackSleuth/api-reference.html)
-- [Configuration Options](https://jack-github12.github.io/StackSleuth/configuration.html)
-- [Examples & Tutorials](https://jack-github12.github.io/StackSleuth/examples.html)
-- [Troubleshooting](https://jack-github12.github.io/StackSleuth/troubleshooting.html)
+- [Getting Started Guide](https://jackulau.github.io/StackSleuth/getting-started.html)
+- [API Reference](https://jackulau.github.io/StackSleuth/api-reference.html)
+- [Configuration Options](https://jackulau.github.io/StackSleuth/configuration.html)
+- [Examples & Tutorials](https://jackulau.github.io/StackSleuth/examples.html)
+- [Troubleshooting](https://jackulau.github.io/StackSleuth/troubleshooting.html)
 
 ## 🏆 Comparisons
 
@@ -477,14 +477,14 @@ Built with ❤️ using:
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Jack-GitHub12/StackSleuth&type=Date)](https://star-history.com/#Jack-GitHub12/StackSleuth&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=jackulau/StackSleuth&type=Date)](https://star-history.com/#jackulau/StackSleuth&Date)
 
 ---
 
 <div align="center">
   
-  **[Website](https://jack-github12.github.io/StackSleuth/)** • 
-  **[Documentation](https://jack-github12.github.io/StackSleuth/)** • 
+  **[Website](https://jackulau.github.io/StackSleuth/)** • 
+  **[Documentation](https://jackulau.github.io/StackSleuth/)** • 
   **[Examples](examples/)** • 
   **[Changelog](CHANGELOG.md)**
   
