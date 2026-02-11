@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "@stacksleuth/core": "^0.2.1",
-    "axios": "^1.6.0",
+    "axios": "^1.13.5",
     "ws": "^8.14.0"
   },
   "devDependencies": {
