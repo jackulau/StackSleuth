@@ -39,7 +39,7 @@
     "@stacksleuth/core": "^0.2.1",
     "nodemailer": "7.0.12",
     "puppeteer": "24.34.0",
-    "svelte": ">=3.0.0",
+    "svelte": ">=5.51.5",
     "vite": "7.3.0"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "vitest": "^4.0.16"
   },
   "peerDependencies": {
-    "svelte": ">=3.0.0"
+    "svelte": ">=5.51.5"
   },
   "publishConfig": {
     "access": "public"
