@@ -42,7 +42,7 @@
     "@stacksleuth/core": "^0.2.1",
     "nodemailer": "7.0.12",
     "puppeteer": "24.34.0",
-    "vite": "7.3.0"
+    "vite": "7.3.2"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",
