@@ -40,9 +40,9 @@
   "dependencies": {
     "@stacksleuth/browser-agent": "^0.2.1",
     "@stacksleuth/core": "^0.2.1",
-    "nodemailer": "7.0.12",
+    "nodemailer": "8.0.5",
     "puppeteer": "24.34.0",
-    "vite": "7.3.0"
+    "vite": "7.3.2"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",

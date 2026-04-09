@@ -37,8 +37,8 @@
   ],
   "dependencies": {
     "@stacksleuth/core": "^0.2.1",
-    "nodemailer": "7.0.12",
-    "vite": "7.3.0"
+    "nodemailer": "8.0.5",
+    "vite": "7.3.2"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
