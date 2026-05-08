@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "@stacksleuth/core": "^0.2.1",
-    "axios": "^1.6.0",
+    "axios": "^1.15.2",
     "cheerio": "^1.0.0-rc.12",
     "nodemailer": "8.0.5",
     "playwright": "^1.40.0",
