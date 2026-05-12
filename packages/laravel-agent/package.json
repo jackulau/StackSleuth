@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "@stacksleuth/core": "^0.2.1",
-    "axios": "^1.6.0",
+    "axios": "^1.15.2",
     "nodemailer": "8.0.5",
     "puppeteer": "24.34.0",
     "vite": "7.3.2",
